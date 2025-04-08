@@ -219,6 +219,7 @@ section {
   display: none;
   flex-direction: column;
   justify-content: space-between;
+  margin-right: 20px;
   width: 30px;
   height: 21px;
   cursor: pointer;
