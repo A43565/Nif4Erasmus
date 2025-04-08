@@ -1,0 +1,347 @@
+@import url("https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap");
+
+@font-face {
+  font-family: "Dela Gothic One";
+  src: url("../fonts/dela-gothic.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --brand-color: #1828f8;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-padding-top: 140px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  scroll-behavior: smooth;
+}
+
+header {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 95%;
+  background-color: white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 50px;
+  padding: 1rem 2rem;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+header .spacer {
+  height: 0;
+  flex: 1;
+}
+
+
+.logo {
+  font-family: "Dela Gothic One", sans-serif;
+  font-size: 1.5rem;
+  color: var(--brand-color);
+  text-decoration: none;
+  margin: auto;
+}
+/* Navigation container (2/3 of space) */
+nav {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+nav ul {
+  display: flex;
+  width: 100%;
+  list-style: none;
+  justify-content: space-around;
+  padding: 0;
+  margin: 0;
+}
+
+
+nav ul li {
+  /* Remove any existing margins/padding if needed */
+  padding: 0;
+  margin: 0;
+}
+
+nav ul li a {
+  transform: scale(1, 0.9);
+  transform-origin: left center;
+  font-family: "Dela Gothic One", sans-serif;
+  text-decoration: none;
+  color: var(--brand-color);
+  font-weight: bold;
+  position: relative;
+  padding-bottom: 4px;
+  transition: color 0.3s ease;
+  text-transform: uppercase;
+}
+
+nav ul li a:hover,
+nav ul li a.active {
+  color: var(--brand-color);
+}
+
+nav ul li a.active::after,
+nav ul li a:hover::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background-color: var(--brand-color);
+  bottom: 0;
+  left: 0;
+}
+
+section {
+  padding: 100px 20px;
+  min-height: 100vh;
+}
+
+.spacer {
+  height: 140px;
+}
+
+/* Welcome Section Background Image */
+#home {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  color: white;
+  padding-top: 6rem;
+  background-image: url("../images/home.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+#home::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.8); /* Opacity overlay */
+  z-index: 0;
+}
+
+#home .content {
+  position: relative;
+  z-index: 10;
+  max-width: 800px;
+  padding: 1rem;
+  margin-left: 10%;
+  text-align: left;
+}
+
+#home h1 {
+  font-size: 3.5rem; /* Increased from 2.5rem */
+  font-weight: bold;
+  color: var(--brand-color);
+  margin-bottom: 1.5rem; /* Slightly increased margin for better spacing */
+  font-family: "Dela Gothic One", sans-serif;
+  letter-spacing: 2px; /* Added letter spacing */
+  line-height: 1.2; /* Improved line height for better readability */
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: white;
+}
+
+#home p {
+  font-size: 1.4rem; /* Increased from 1.125rem */
+  margin-bottom: 2.5rem; /* Slightly increased margin */
+  letter-spacing: 1.5px; /* Added letter spacing */
+  line-height: 1.6; /* Improved line height for better readability */
+  -webkit-text-stroke-width: 1px;
+}
+
+#home a {
+  background-color: #e0b814;
+  color: white;
+  font-weight: 600;
+  padding: 0.85rem 1.75rem; /* Slightly larger button */
+  border-radius: 9999px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  font-size: 1.25rem; /* Slightly increased from 1.125rem */
+  letter-spacing: 1px; /* Added letter spacing */
+  -webkit-text-stroke-width: 1px;
+}
+
+#home a::before {
+  background: rgba(0, 0, 0, 0.8); /* Opacity overlay */
+}
+
+#home a:hover {
+  background-color: #af860c;
+}
+
+/* Brand styling for other sections */
+#about,
+#services,
+#partners,
+#articles,
+#faq,
+#contact {
+  font-family: "Dela Gothic One", sans-serif;
+  color: var(--brand-color);
+}
+
+#about h2,
+#services h2,
+#partners h2,
+#articles h2,
+#faq h2,
+#contact h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+/* Add these styles to your style.css file */
+
+/* Hamburger Menu Styles */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 21px;
+  cursor: pointer;
+  z-index: 20;
+}
+
+.hamburger span {
+  display: block;
+  height: 3px;
+  width: 100%;
+  background-color: var(--brand-color);
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 1095px) {
+  /* Show hamburger, hide regular nav */
+  .hamburger {
+    display: flex;
+  }
+  
+  header {
+    padding: 1rem;
+  }
+  header .spacer {
+    display: none;
+  }
+  .logo {
+    width: auto;
+  }
+  
+  nav {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 70%;
+    height: 100vh;
+    background-color: white;
+    box-shadow: -5px 0 10px rgba(0, 0, 0, 0.1);
+    padding: 80px 20px 20px;
+    transition: all 0.3s ease;
+    z-index: 10;
+  }
+  
+  nav.active {
+    right: 0;
+  }
+  
+  nav ul {
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+  
+  /* Hamburger animation when active */
+  .hamburger.active span:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+  }
+  
+  .hamburger.active span:nth-child(2) {
+    opacity: 0;
+  }
+  
+  .hamburger.active span:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+  }
+  
+  /* Home section responsive styles */
+  #home .content {
+    margin-left: 5%;
+    padding: 0.5rem;
+  }
+  
+  #home h1 {
+    font-size: 2.2rem;
+    letter-spacing: 1px;
+  }
+  
+  #home p {
+    font-size: 1.1rem;
+  }
+  
+  #home a {
+    padding: 0.7rem 1.4rem;
+    font-size: 1.1rem;
+  }
+  
+  /* Section titles responsive styles */
+  #about h2,
+  #services h2,
+  #partners h2,
+  #articles h2,
+  #faq h2,
+  #contact h2 {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+  
+  section {
+    padding: 80px 15px;
+  }
+  header .spacer {
+    flex: 1;
+  }
+}
+
+/* Additional breakpoint for very small screens */
+@media screen and (max-width: 480px) {
+  #home h1 {
+    font-size: 1.8rem;
+  }
+  
+  #home p {
+    font-size: 1rem;
+  }
+}
+
+@media screen and (max-width: 1700px) {
+  header .spacer {
+    display: none;
+  }
+}
+
+
