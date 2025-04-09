@@ -74,13 +74,17 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 
-  // ✅ Close menu when clicking outside
-  document.addEventListener("click", (event) => {
-    if (!hamburger.contains(event.target) && !nav.contains(event.target)) {
+   // ✅ Close menu when clicking outside (optional)
+   document.addEventListener("click", (event) => {
+    if (
+      nav.classList.contains("active") &&
+      !hamburger.contains(event.target) &&
+      !nav.contains(event.target)
+    ) {
       hamburger.classList.remove("active");
       nav.classList.remove("active");
+      document.body.classList.remove("no-scroll");
     }
-  });
-
+  })
   
 });

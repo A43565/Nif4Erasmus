@@ -27,6 +27,11 @@ body {
   font-family: Arial, sans-serif;
   scroll-behavior: smooth;
 }
+body.no-scroll {
+  overflow: hidden;
+  height: 100vh;
+}
+
 
 header {
   position: fixed;
