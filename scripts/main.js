@@ -7,6 +7,27 @@ document.addEventListener("DOMContentLoaded", () => {
   let lastKnownScrollY = window.scrollY;
   let ticking = false;
 
+    function lockScroll() {
+    // Store current scroll position
+    scrollPosition = window.pageYOffset;
+    // Add styles to lock the body
+    body.style.overflow = 'hidden';
+    body.style.position = 'fixed';
+    body.style.top = `-${scrollPosition}px`;
+    body.style.width = '100%';
+  }
+  
+  function unlockScroll() {
+    // Remove scroll lock styles
+    body.style.removeProperty('overflow');
+    body.style.removeProperty('position');
+    body.style.removeProperty('top');
+    body.style.removeProperty('width');
+    // Restore scroll position
+    window.scrollTo(0, scrollPosition);
+  }
+  
+
   // ✅ Update active nav link based on scroll position
   function updateActiveLink() {
     let current = "";
@@ -67,28 +88,51 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // ✅ Mobile menu toggle
-  hamburger?.addEventListener("click", () => {
-    hamburger.classList.toggle("active");
-    nav.classList.toggle("active");
-    body.classList.toggle('no-scroll'); // Toggle no-scroll class on body
+  function lockScroll() {
+    // Store current scroll position
+    scrollPosition = window.pageYOffset;
+    // Add styles to lock the body
+    body.style.overflow = 'hidden';
+    body.style.position = 'fixed';
+    body.style.top = `-${scrollPosition}px`;
+    body.style.width = '100%';
+  }
+  
+  function unlockScroll() {
+    // Remove scroll lock styles
+    body.style.removeProperty('overflow');
+    body.style.removeProperty('position');
+    body.style.removeProperty('top');
+    body.style.removeProperty('width');
+    // Restore scroll position
+    window.scrollTo(0, scrollPosition);
+  }
+  
+  hamburger.addEventListener('click', function() {
+    hamburger.classList.toggle('active');
+    nav.classList.toggle('active');
+    
+    if (nav.classList.contains('active')) {
+      lockScroll();
+    } else {
+      unlockScroll();
+    }
   });
-
   
   navLinks.forEach(link => {
     link.addEventListener('click', function() {
       hamburger.classList.remove('active');
       nav.classList.remove('active');
-      body.classList.remove('no-scroll'); // Remove no-scroll class
+      unlockScroll();
     });
   });
   
   // Close menu when clicking outside
   document.addEventListener('click', function(event) {
-    if (!hamburger.contains(event.target) && !nav.contains(event.target)) {
+    if (!hamburger.contains(event.target) && !nav.contains(event.target) && nav.classList.contains('active')) {
       hamburger.classList.remove('active');
       nav.classList.remove('active');
-      body.classList.remove('no-scroll'); // Remove no-scroll class
+      unlockScroll();
     }
   });
   
