@@ -71,20 +71,25 @@ document.addEventListener("DOMContentLoaded", () => {
   hamburger?.addEventListener("click", () => {
     hamburger.classList.toggle("active");
     nav.classList.toggle("active");
+    body.classList.toggle('no-scroll'); // Toggle no-scroll class on body
   });
 
-
-   // ✅ Close menu when clicking outside (optional)
-   document.addEventListener("click", (event) => {
-    if (
-      nav.classList.contains("active") &&
-      !hamburger.contains(event.target) &&
-      !nav.contains(event.target)
-    ) {
-      hamburger.classList.remove("active");
-      nav.classList.remove("active");
-      document.body.classList.remove("no-scroll");
+  
+  navLinks.forEach(link => {
+    link.addEventListener('click', function() {
+      hamburger.classList.remove('active');
+      nav.classList.remove('active');
+      body.classList.remove('no-scroll'); // Remove no-scroll class
+    });
+  });
+  
+  // Close menu when clicking outside
+  document.addEventListener('click', function(event) {
+    if (!hamburger.contains(event.target) && !nav.contains(event.target)) {
+      hamburger.classList.remove('active');
+      nav.classList.remove('active');
+      body.classList.remove('no-scroll'); // Remove no-scroll class
     }
-  })
+  });
   
 });
