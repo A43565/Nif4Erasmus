@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let lastKnownScrollY = window.scrollY;
   let ticking = false;
-let scrollPosition = 0;
+  let scrollPosition = 0;
   
 
   // ✅ Update active nav link based on scroll position
