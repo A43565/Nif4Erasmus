@@ -251,6 +251,145 @@ section {
 .hamburger.active span:nth-child(3) {
   transform: translateY(-9px) rotate(-45deg);
 }
+
+/* Services Section Styles */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+#services {
+  background-color: #f9f9f9;
+  text-align: center;
+}
+
+#services h2 {
+  color: var(--brand-color);
+  font-family: "Dela Gothic One", sans-serif;
+  margin-bottom: 1.5rem;
+  font-size: 2.5rem;
+}
+
+.services-intro {
+  max-width: 800px;
+  margin: 0 auto 3rem;
+  color: #333;
+  font-size: 1.2rem;
+  line-height: 1.6;
+}
+
+.services-cards {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-bottom: 4rem;
+}
+
+.service-card {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  flex: 1;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.service-card h3 {
+  color: var(--brand-color);
+  font-family: "Dela Gothic One", sans-serif;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.service-card p {
+  margin-bottom: 1.5rem;
+  color: #555;
+  line-height: 1.5;
+  flex-grow: 1;
+}
+
+.service-btn {
+  background-color: var(--brand-color);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 50px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.service-btn:hover {
+  background-color: #0a1ad9;
+}
+
+/* Get Your NIF Section */
+.get-nif-section {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  margin-top: 3rem;
+  text-align: left;
+}
+
+.get-nif-text {
+  flex: 1;
+}
+
+.get-nif-text h3 {
+  color: var(--brand-color);
+  font-family: "Dela Gothic One", sans-serif;
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+}
+
+.get-nif-text p {
+  margin-bottom: 1.5rem;
+  color: #555;
+  line-height: 1.6;
+  font-size: 1.1rem;
+}
+
+.get-nif-btn {
+  background-color: #e0b814;
+  color: white;
+  border: none;
+  padding: 0.85rem 1.75rem;
+  border-radius: 50px;
+  font-weight: bold;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.get-nif-btn:hover {
+  background-color: #af860c;
+}
+
+.get-nif-image {
+  flex: 1;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.get-nif-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+
 /* Responsive Styles */
 @media screen and (max-width: 1095px) {
   /* Show hamburger, hide regular nav */
@@ -334,6 +473,33 @@ section {
   header .spacer {
     flex: 1;
   }
+  .services-cards {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .service-card {
+    max-width: 100%;
+    width: 100%;
+  }
+  
+  .get-nif-section {
+    flex-direction: column-reverse;
+  }
+  
+  .get-nif-text, .get-nif-image {
+    width: 100%;
+  }
+  
+  #services h2 {
+    font-size: 2rem;
+  }
+  
+  .get-nif-text h3 {
+    font-size: 1.8rem;
+    text-align: center;
+  }
+
 }
 
 /* Additional breakpoint for very small screens */
@@ -343,6 +509,25 @@ section {
   }
   
   #home p {
+    font-size: 1rem;
+  }
+  #services h2 {
+    font-size: 1.8rem;
+  }
+  
+  .services-intro {
+    font-size: 1rem;
+  }
+  
+  .service-card h3 {
+    font-size: 1.3rem;
+  }
+  
+  .get-nif-text h3 {
+    font-size: 1.5rem;
+  }
+  
+  .get-nif-text p {
     font-size: 1rem;
   }
 }
