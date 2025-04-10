@@ -292,6 +292,8 @@ section {
     display: flex;
     align-items: center;
     gap: 2rem;
+    min-height: calc(100% - 100px); /* Ensure it takes most of the height */
+    padding-bottom: 40px; /* Add padding at bottom for better scrolling */
   }
 
   
