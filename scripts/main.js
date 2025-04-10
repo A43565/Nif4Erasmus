@@ -3,29 +3,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const navLinks = document.querySelectorAll("nav ul li a");
   const hamburger = document.querySelector(".hamburger");
   const nav = document.querySelector("nav");
+  const body = document.body;
 
   let lastKnownScrollY = window.scrollY;
   let ticking = false;
-
-    function lockScroll() {
-    // Store current scroll position
-    scrollPosition = window.pageYOffset;
-    // Add styles to lock the body
-    body.style.overflow = 'hidden';
-    body.style.position = 'fixed';
-    body.style.top = `-${scrollPosition}px`;
-    body.style.width = '100%';
-  }
-  
-  function unlockScroll() {
-    // Remove scroll lock styles
-    body.style.removeProperty('overflow');
-    body.style.removeProperty('position');
-    body.style.removeProperty('top');
-    body.style.removeProperty('width');
-    // Restore scroll position
-    window.scrollTo(0, scrollPosition);
-  }
+let scrollPosition = 0;
   
 
   // ✅ Update active nav link based on scroll position
@@ -111,7 +93,8 @@ document.addEventListener("DOMContentLoaded", () => {
   hamburger.addEventListener('click', function() {
     hamburger.classList.toggle('active');
     nav.classList.toggle('active');
-    
+    body.classList.toggle('no-scroll');
+
     if (nav.classList.contains('active')) {
       lockScroll();
     } else {
@@ -123,6 +106,7 @@ document.addEventListener("DOMContentLoaded", () => {
     link.addEventListener('click', function() {
       hamburger.classList.remove('active');
       nav.classList.remove('active');
+       document.body.classList.remove("no-scroll");
       unlockScroll();
     });
   });
@@ -132,6 +116,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!hamburger.contains(event.target) && !nav.contains(event.target) && nav.classList.contains('active')) {
       hamburger.classList.remove('active');
       nav.classList.remove('active');
+      document.body.classList.remove("no-scroll");
       unlockScroll();
     }
   });
