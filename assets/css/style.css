@@ -8,6 +8,7 @@
   font-display: swap;
 }
 
+
 :root {
   --brand-color: #1828f8;
 }
@@ -267,22 +268,26 @@ section {
 #services h2 {
   color: var(--brand-color);
   font-family: "Dela Gothic One", sans-serif;
+  text-align: start;
   margin-bottom: 1.5rem;
   font-size: 2.5rem;
 }
 
 .services-intro {
   max-width: 800px;
-  margin: 0 auto 3rem;
+  margin-bottom: 2rem;
   color: #333;
   font-size: 1.2rem;
   line-height: 1.6;
+  text-align: start;
 }
+
+
 
 .services-cards {
   display: flex;
   justify-content: center;
-  gap: 30px;
+  gap: 10%;
   margin-bottom: 4rem;
 }
 
@@ -297,6 +302,9 @@ section {
   flex-direction: column;
   align-items: center;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  padding-bottom: 3.5rem; /* Add extra padding at bottom for button space */
+  margin-bottom: 2rem; /* Add margin to account for half-button overflow */
 }
 
 .service-card:hover {
@@ -312,7 +320,6 @@ section {
 }
 
 .service-card p {
-  margin-bottom: 1.5rem;
   color: #555;
   line-height: 1.5;
   flex-grow: 1;
@@ -327,30 +334,60 @@ section {
   font-weight: bold;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  position: absolute;
+  bottom: -1.5rem; /* Position the button halfway outside the card */
+  left: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Enhanced shadow */
+  font-size: 1.25rem; /* Larger font size */
+  min-width: 160px; /* Ensure minimum width for consistency */
+  text-align: center;
 }
 
 .service-btn:hover {
-  background-color: #0a1ad9;
+  background-color: #0a1ad9;  
+  transform: translateX(-50%) translateY(-2px); /* Slight lift effect on hover */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25); /* Enhanced shadow on hover */
+}
+.service-btn h4 {
+  margin: 0;
+  font-family: "Dela Gothic One", sans-serif;
+  font-size: 1rem;
+  color: white;
+}
+/* Price emphasis styling */
+.price-amount {
+  font-family: 'Roboto';
+  font-size: 1.4rem;
 }
 
-/* Get Your NIF Section */
+
+
+/* Get Your NIF Section - Updated Layout */
 .get-nif-section {
+  margin-top: 4rem;
+  text-align: center;
+}
+
+.get-nif-title {
+  color: var(--brand-color);
+  font-family: "Dela Gothic One", sans-serif;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  text-align: start;
+}
+
+.get-nif-content {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 40px;
-  margin-top: 3rem;
   text-align: left;
 }
 
 .get-nif-text {
   flex: 1;
-}
-
-.get-nif-text h3 {
-  color: var(--brand-color);
-  font-family: "Dela Gothic One", sans-serif;
-  margin-bottom: 1.5rem;
-  font-size: 2rem;
+  display: flex;
+  flex-direction: column;
 }
 
 .get-nif-text p {
@@ -370,6 +407,8 @@ section {
   font-size: 1.1rem;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  align-self: flex-start; /* Aligns button to the left */
+  margin-top: 0.5rem;
 }
 
 .get-nif-btn:hover {
@@ -388,7 +427,6 @@ section {
   height: auto;
   display: block;
 }
-
 
 /* Responsive Styles */
 @media screen and (max-width: 1095px) {
@@ -474,6 +512,7 @@ section {
     flex: 1;
   }
   .services-cards {
+    gap: 2em;
     flex-direction: column;
     align-items: center;
   }
@@ -486,7 +525,13 @@ section {
   .get-nif-section {
     flex-direction: column-reverse;
   }
-  
+  .get-nif-content {
+    flex-direction: column-reverse;
+  }
+  .get-nif-btn {
+    align-self: center; /* Center button on mobile */
+    margin-top: 1rem;
+  }
   .get-nif-text, .get-nif-image {
     width: 100%;
   }
@@ -526,7 +571,9 @@ section {
   .get-nif-text h3 {
     font-size: 1.5rem;
   }
-  
+  .get-nif-title {
+    font-size: 1.8rem;
+  }
   .get-nif-text p {
     font-size: 1rem;
   }
