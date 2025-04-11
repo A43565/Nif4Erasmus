@@ -839,7 +839,48 @@ section {
 }
 
 .nested-list li {
-  margin-bottom: 0.25rem;
+  margin: 0.25rem 0;
+}
+
+/* As a student. Why should I request a NIF? Section */
+.student-nif-section {
+  text-align: start;
+  margin-top: 4rem;
+}
+
+.student-nif-title {
+  font-family: "Dela Gothic One", sans-serif;
+  color: var(--brand-color);
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  text-align: start;
+}
+
+.student-nif-item {
+  margin-bottom: 1.5rem;
+  padding: 1.5rem;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.student-nif-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.student-nif-item h3 {
+  font-family: "Dela Gothic One", sans-serif;
+  color: black;
+  margin-bottom: 0.75rem;
+  font-size: 1.2rem;
+}
+
+.student-nif-item p {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #555;
 }
 
 /* Responsive styles */
@@ -890,6 +931,10 @@ section {
   .documents-text, .documents-image {
     width: 100%;
   }
+  .student-nif-title {
+    text-align: center;
+    font-size: 1.8rem;
+  }
 }
 
 @media screen and (max-width: 600px) {
@@ -905,6 +950,17 @@ section {
   }
   
   .documents-intro, .documents-list {
+    font-size: 1rem;
+  }
+  .student-nif-title {
+    font-size: 1.6rem;
+  }
+  
+  .student-nif-item h3 {
+    font-size: 1.2rem;
+  }
+  
+  .student-nif-item p {
     font-size: 1rem;
   }
 }
