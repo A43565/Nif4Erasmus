@@ -275,7 +275,7 @@ section {
 
 .services-intro {
   max-width: 800px;
-  margin-bottom: 2rem;
+  margin-bottom: 4rem;
   color: #333;
   font-size: 1.2rem;
   line-height: 1.6;
@@ -379,7 +379,7 @@ section {
 
 .get-nif-content {
   display: flex;
-  align-items: flex-start;
+  align-items: stretch;
   gap: 40px;
   text-align: left;
 }
@@ -387,7 +387,9 @@ section {
 .get-nif-text {
   flex: 1;
   display: flex;
+  justify-content: space-between;
   flex-direction: column;
+  padding-bottom: 10px;
 }
 
 .get-nif-text p {
@@ -407,7 +409,7 @@ section {
   font-size: 1.1rem;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  align-self: flex-start; /* Aligns button to the left */
+  align-self: center; /* Aligns button to the left */
   margin-top: 0.5rem;
 }
 
