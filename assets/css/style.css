@@ -767,6 +767,81 @@ section {
   font-size: 1rem;
 }
 
+/* Which Documents Do I Need Section */
+.documents-section {
+  margin-top: 4rem;
+  text-align: center;
+}
+
+.documents-title {
+  font-family: "Dela Gothic One", sans-serif;
+  color: var(--brand-color);
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  text-align: start;
+}
+
+.documents-content {
+  display: flex;
+  align-items: stretch;
+  gap: 12%;
+  text-align: left;
+  /* Removed the flex-direction: row-reverse to keep image on the right */
+}
+
+.documents-image {
+  flex: 1;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.documents-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.documents-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.documents-intro {
+  margin-bottom: 1.5rem;
+  color: #555;
+  line-height: 1.6;
+  font-size: 1.1rem;
+}
+
+.documents-list {
+  list-style-type: disc;
+  margin-left: 1.5rem;
+  color: #555;
+  line-height: 1.6;
+  font-size: 1.1rem;
+}
+
+.documents-list li {
+  margin-bottom: 1rem;
+}
+
+.nested-list {
+  list-style-type: circle;
+  margin-left: 1.5rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  color: #555;
+  line-height: 1.5;
+  font-size: 1rem;
+}
+
+.nested-list li {
+  margin-bottom: 0.25rem;
+}
+
 /* Responsive styles */
 @media screen and (max-width: 1095px) {
   .about-content,
@@ -802,6 +877,19 @@ section {
   .team-grid {
     grid-template-columns: repeat(2, 1fr);
   }
+  .documents-content {
+    gap: 40px;
+    flex-direction: column-reverse; /* Changed to column-reverse to match your existing mobile layout pattern */
+  }
+  
+  .documents-title {
+    text-align: center;
+    font-size: 1.8rem;
+  }
+  
+  .documents-text, .documents-image {
+    width: 100%;
+  }
 }
 
 @media screen and (max-width: 600px) {
@@ -811,6 +899,13 @@ section {
   
   .about-container h2 {
     font-size: 1.8rem;
+  }
+  .documents-title {
+    font-size: 1.8rem;
+  }
+  
+  .documents-intro, .documents-list {
+    font-size: 1rem;
   }
 }
 
