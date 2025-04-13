@@ -80,7 +80,10 @@
               The NIF(tax number) is the first document you need when moving to
               Portugal.
             </p>
-            <button class="service-btn">
+            <button
+              class="service-btn"
+              onClick="document.getElementById('three-easy-steps').scrollIntoView();"
+            >
               <h4>
                 <span class="price-amount">€50</span>
               </h4>
@@ -186,16 +189,51 @@
             <p>To have a portuguese bank account you will need a NIF.</p>
           </div>
         </div>
+
+        <!-- Add this after the student-nif-section div -->
+        <section id="three-easy-steps" class="process-flow-section">
+          <h3 class="process-flow-title">GET YOUR NIF IN 3 EASY STEPS!</h3>
+
+          <div class="process-flow-container">
+            <div class="process-step">
+              <div class="step-content">
+                <h3>PLACE YOUR ORDER</h3>
+                <p>Fill out our online form and complete the payment.</p>
+              </div>
+            </div>
+
+            <div class="process-step">
+              <div class="step-content">
+                <h3>SIGN YOUR POWER OF ATTORNEY</h3>
+                <p>This allows us to request your NIF on your behalf.</p>
+              </div>
+            </div>
+
+            <div class="process-step">
+              <div class="step-content">
+                <h3>RECEIVE YOUR NIF</h3>
+                <p>
+                  You will receive your NIF via email and the official PDF from
+                  Portal das Finanças.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <button class="order-now-btn">ORDER NOW YOUR NIF!</button>
+        </section>
         <!-- As a foreign student. Why do I need a tax representative? Section -->
         <div class="student-nif-section">
           <h3 class="student-nif-title">
             As a student. Why do I need a tax representative?
           </h3>
-          <p style="color: black;">
-            If you are a non-Eurpoean Union (EU) or European Economic Area (EEA) citizen and you want to obtain a NIF (Número de Identificação Fiscal) in Portugal, you are required to appoint a tax representative.
+          <p style="color: black">
+            If you are a non-Eurpoean Union (EU) or European Economic Area (EEA)
+            citizen and you want to obtain a NIF (Número de Identificação
+            Fiscal) in Portugal, you are required to appoint a tax
+            representative.
           </p>
         </div>
-        
       </div>
     </section>
 
