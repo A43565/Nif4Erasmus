@@ -1,4 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
 
 @font-face {
   font-family: "Dela Gothic One";
@@ -116,9 +118,6 @@ nav ul li a:hover::after {
 }
 
 
-section {
-  padding: 100px 20px;
-}
 
 .spacer {
   height: 140px;
@@ -257,7 +256,7 @@ section {
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 100px 20px;
 }
 
 #services {
@@ -411,8 +410,12 @@ section {
   transition: background-color 0.3s ease;
   align-self: center; /* Aligns button to the left */
   margin-top: 0.5rem;
+  outline: none;
 }
-
+.service-btn:focus,
+.get-nif-btn:focus {
+  outline: 3px solid rgba(24, 40, 248, 0.4);
+}
 .get-nif-btn:hover {
   background-color: #af860c;
 }
@@ -508,9 +511,6 @@ section {
     text-align: center;
   }
   
-  section {
-    padding: 80px 15px;
-  }
   header .spacer {
     flex: 1;
   }
@@ -937,6 +937,24 @@ section {
   }
 }
 
+@media (max-width: 768px) {
+  .services-cards,
+  .get-nif-content {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .service-card {
+    max-width: 100%;
+  }
+
+  .get-nif-btn {
+    align-self: stretch;
+    width: 100%;
+  }
+}
+
+
 @media screen and (max-width: 600px) {
   .team-grid {
     grid-template-columns: 1fr;
@@ -965,6 +983,18 @@ section {
   }
 }
 
+/* As a student. Why should I request a NIF? Section */
+.foreign-student-section {
+  text-align: start;
+  margin-top: 4rem;
+}
+
+.foreign-student-title {
+  font-family: "Dela Gothic One", sans-serif;
+  color: var(--brand-color);
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+}
 
 /* Process Flow Section Styles */
 .process-flow-section {
@@ -1108,3 +1138,23 @@ section {
   }
 }
 
+#three-easy-steps{
+  margin-top: 50px;
+}
+
+/* Only for non european citizens Section */
+.foreign-citizen-section {
+  text-align: start;
+  margin-top: 4rem;
+}
+
+.foreign-citizen-title {
+  font-family: "Dela Gothic One", sans-serif;
+  color: var(--brand-color);
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.foreign-citizen-section p{
+  margin-bottom: 1.5rem;
+}
