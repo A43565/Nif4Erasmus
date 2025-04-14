@@ -96,7 +96,8 @@
               Fiscal representtives are in charge of informing you about the
               rule and regulations of tax.
             </p>
-            <button class="service-btn">
+            <button class="service-btn"
+              onClick="document.getElementById('nif-tax-easy-steps').scrollIntoView();">
               <h4>
                 <span class="price-amount">€50</span>
               </h4>
@@ -223,7 +224,7 @@
           <button class="order-now-btn">ORDER NOW YOUR NIF!</button>
         </section>
       </div>
-      
+
       <section id="image-spacer-section" style="padding: 0; margin: 0">
         <img
           src="assets/images/ponte-dluis.jpeg"
@@ -237,19 +238,66 @@
           "
         />
       </section>
+
       <div class="container">
         <!-- Only for non european citizens Section -->
         <div class="foreign-citizen-section">
-          <h3 class="foreign-citizen-title">
-           Only for Non-European citizens
-          </h3>
+          <h3 class="foreign-citizen-title">Only for Non-European citizens</h3>
           <p style="color: black">
-            Already have a NIF? And you just need a tax representative? Or need both?
+            Already have a NIF? And you just need a tax representative? Or need
+            both?
           </p>
-          
-          <p style="color: black">
-            We got you covered!
-          </p>
+
+          <p style="color: black">We got you covered!</p>
+        </div>
+        <!-- Tax representative Section -->
+        <div class="get-nif-section">
+          <h3 class="get-nif-title">Get a tax representative</h3>
+          <div class="get-nif-content">
+            <div class="get-nif-text">
+              <p>
+                Getting a tax representative in Portugal is a requirement for
+                non EU/EEA Citizen, in order to obtain a Portuguese NIF.
+              </p>
+              <p>
+                The tax representative is an intermediary who will handle your
+                tax obligations and communicate with the Portuguese tax
+                authorities (Autoridade Tributária) on your behalf.
+              </p>
+              <button class="get-nif-btn">GET A TAX REPRESENTATIVE!</button>
+            </div>
+            <div class="get-tax-image">
+              <img
+                src="assets/images/tax-representative.jpeg"
+                alt="Get a tax representative"
+              />
+            </div>
+          </div>
+        </div>
+        <!-- Add this after the get-nif-section div -->
+        <div class="documents-section">
+          <h3 class="documents-title">Which Documents Do I Need</h3>
+          <div class="documents-content">
+            <div class="documents-image">
+              <img
+                src="assets/images/documents.jpeg"
+                alt="Required Documents"
+              />
+            </div>
+            <div class="documents-text">
+              <p class="documents-intro">You will need just 2 documents:</p>
+              <ul class="documents-list">
+                <li>
+                  Your NIF number (If you dont have it yet twe can request it for you)
+                </li>
+                <li>A valid identification document.
+                  <ul class="nested-list">
+                    <li>For Non-Eu Citizens: Passport.</li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
         <!-- As a foreign student. Why do I need a tax representative? Section -->
         <div class="foreign-student-section">
@@ -263,6 +311,37 @@
             representative.
           </p>
         </div>
+        <!-- Add this after the student-nif-section div -->
+        <section id="nif-tax-easy-steps" class="process-flow-section">
+          <h3 class="process-flow-title">GET YOUR NIF AND TAX REPRESENTATIVE IN 3 EASY STEPS!</h3>
+
+          <div class="process-flow-container">
+            <div class="process-step">
+              <div class="step-content">
+                <h3>1. PLACE YOUR ORDER</h3>
+                <p>Fill out our online form and complete the payment.</p>
+              </div>
+            </div>
+
+            <div class="process-step">
+              <div class="step-content">
+                <h3>2. SIGN THE DOCUMENTS</h3>
+                <p>We will send you the Power of Attorney and the statement of appointment for you to sign. This allows us to request your NIF on your behalf and to be your tax representant.</p>
+              </div>
+            </div>
+
+            <div class="process-step">
+              <div class="step-content">
+                <h3>3. RECEIVE YOUR NIF</h3>
+                <p>
+                  You will receive your NIF with the nomination of us as your tax representative via email with the official PDF from Portal das Finanças.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <button class="order-now-btn">ORDER NOW YOUR NIF WITH TAX REPRESENTATIVE!</button>
+        </section>
       </div>
     </section>
 
