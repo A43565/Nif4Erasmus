@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Nif4Erasmus</title>
+    <title>Nif4Erasmus - About Us</title>
 
     <!-- Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -18,7 +18,7 @@
   </head>
   <body>
     <header>
-      <a href="index.html" class="logo">Nif4Erasmus</a>
+      <a href="index.html" class="logo">NIF4Erasmus</a>
       <div class="spacer"></div>
       <!-- Add this right after the logo in your header -->
       <div class="hamburger">
@@ -28,31 +28,57 @@
       </div>
       <nav>
         <ul>
-          <li><a href="about.html">ABOUT US</a></li>
+          <li><a href="about.html" class="active">ABOUT US</a></li>
           <li><a href="index.html#services">SERVICES</a></li>
           <li><a href="partners.html">PARTNERS</a></li>
           <li><a href="articles.html">ARTICLES</a></li>
           <li><a href="faq.html">FAQ</a></li>
-          <li><a href="contacts.html">CONTACTS</a></li>
+          <li><a href="contacts.html">CONTACT</a></li>
         </ul>
       </nav>
     </header>
 
-    <!-- Welcome Section -->
-    <section id="home">
-      <div class="content">
-        <h1>PARTNERS</h1>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis at turpis tristique, varius ex eget, mattis leo. Ut elementum est eget ante gravida porta. In porttitor gravida tellus, quis euismod libero fermentum et. Pellentesque pretium sem convallis nisi aliquam porta. Nullam ipsum quam, sollicitudin in magna sit amet, tempor molestie nulla. Curabitur dapibus ultrices metus. Cras id lacus non sapien auctor semper in ut nunc. Donec consequat mi id elit laoreet lacinia. Vestibulum sed nisi fermentum, rutrum mi eget, sagittis est. Integer condimentum tristique enim, vitae cursus nibh lobortis eget. Proin mollis elit non magna dictum auctor. Suspendisse ullamcorper dolor neque. Curabitur id volutpat arcu. Duis efficitur placerat nisi, sit amet mattis justo fringilla at.
-        </p>
-        <a href="#services">GET TO KNOW MORE!</a>
+    <!-- Hero Image Section -->
+    <div id="about-hero">
+      <img src="assets/images/partners-hero.jpeg" alt="About Nif4Erasmus">
+    </div>
+
+    <!-- Partners Section -->
+    <section id="partners" class="partners-container">
+      <h2 class="left-aligned">Partners</h2>
+      
+      <div class="partners-grid">
+        <img src="assets/images/partner-1.jpeg" alt="ESN">
+        <img src="assets/images/partner-2.jpeg" alt="Plano B">
+        <img src="assets/images/partner-3.jpeg" alt="ESN">
+      </div>
+      
+    </section>
+    
+    <!-- About Us Section -->
+    <section id="become-partner" class="partners-container">
+      <h3 class="left-aligned">Become a Partner</h3>
+      
+      <div class="text-image-row">
+        <div class="text-column">
+          <p><b>We Are Looking for New Partners!</b></p>
+          <p>At NIF4Erasmus, we believe that success is built through strategic colaborations and long-term partnerships. We are constantly seeking business and organizations that share our values and goal to jointly offer inovative and high-quality solutions to our clients.</p>
+          
+          <p>If you believe that a partnership with us could be mutually beneficial, we would love to hear from you! We offer flexible terms and unique oportunities for growth.</p>
+          
+          <p><b>How to Become our Partner?</b></p>
+          <p>Simply reach out to us through our contact form or via email at <a href="mailto:nif4erasmus@gmail.com">nif4erasmus@gmail.com</a>, and let''s discuss the best wats we can collaborate.</p>
+          <p>Join ys and let's build a successful future together!</p>
+        </div>
+        
+        <div class="image-column">
+          <img src="assets/images/about-us.jpeg" alt="Our mission">
+        </div>
       </div>
     </section>
 
-    <!-- Services Section -->
-    <section id="services">
-      <h2>Services</h2>
-    </section>
+
+
     <script src="scripts/main.js"></script>
   </body>
 </html>

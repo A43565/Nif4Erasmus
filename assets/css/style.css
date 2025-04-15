@@ -199,7 +199,6 @@ nav ul li a:hover::after {
 /* Brand styling for other sections */
 #about,
 #services,
-#partners,
 #articles,
 #faq,
 #contact {
@@ -209,7 +208,6 @@ nav ul li a:hover::after {
 
 #about h2,
 #services h2,
-#partners h2,
 #articles h2,
 #faq h2,
 #contact h2 {
@@ -1176,5 +1174,73 @@ nav ul li a:hover::after {
   color: var(--brand-color);
   font-size: 2rem;
   margin-bottom: 1.5rem;
+}
+
+/* Container for sections */
+.partners-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 20px;
+}
+
+.partners-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.partners-grid img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.partners-grid img:hover {
+  transform: scale(1.03);
+}
+
+.text-image-row {
+  display: flex;
+  align-items: stretch;
+  gap: 40px;
+  margin: 2rem 0;
+}
+
+.text-column {
+  flex: 1;
+}
+.text-column p {
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #333;
+}
+
+.image-column {
+  flex: 1;
+  display: flex;
+}
+
+.image-column img {
+  width: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  height: 100%; /* Match the height of the text container */
+}
+
+/* Responsive: Stack on smaller screens */
+@media screen and (max-width: 992px) {
+  .text-image-row {
+    flex-direction: column;
+  }
+
+  .image-column img {
+    height: auto; /* Let it go back to natural height when stacked */
+  }
 }
 
