@@ -209,8 +209,6 @@ nav ul li a:hover::after {
 
 #about h2,
 #services h2,
-#articles h2,
-#partners h2,
 #faq h2,
 #contact h2 {
   font-size: 2rem;
@@ -1237,3 +1235,63 @@ nav ul li a:hover::after {
   }
 }
 
+.faq-list {
+  margin-top: 3rem;
+}
+
+.faq-subtitle {
+  font-family: "Dela Gothic One", sans-serif;
+  color: var(--brand-color);
+  font-size: 1.8rem;
+  margin-bottom: 2rem;
+}
+
+.faq-item {
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid #ddd;
+}
+
+.faq-question {
+  font-family: "Dela Gothic One", sans-serif;
+  background: none;
+  border: none;
+  color: #333;
+  font-size: 1.1rem;
+  text-align: left;
+  width: 100%;
+  padding: 1rem 0;
+  cursor: pointer;
+  position: relative;
+}
+
+.faq-question::after {
+  content: "+";
+  position: absolute;
+  right: 0;
+  font-size: 1.2rem;
+  transition: transform 0.3s ease;
+}
+
+.faq-question.active::after {
+  content: "−";
+  transform: rotate(180deg);
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+  color: #555;
+  padding-right: 1.5rem;
+}
+
+.faq-answer p {
+  margin: 0.5rem 0 1rem;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* When visible */
+.faq-answer.open {
+  max-height: 200px; /* enough for 1–2 paragraphs */
+}
