@@ -1499,3 +1499,8 @@ nav ul li a:hover::after {
     transform: scale(0.75);
   }
 }
+.iframe-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
