@@ -18,7 +18,7 @@
   --font-body: "Roboto", sans-serif;
   --font-subheading: "Montserrat", sans-serif;
 
-  --section-padding: 10vw;
+  --section-padding: 15vw;
 }
 
 * {
@@ -58,7 +58,7 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 10vw;
+  gap: 20vw;
 }
 
 
@@ -68,8 +68,9 @@ header {
   font-family:  var(--font-heading), sans-serif;
   font-size: 1.5rem;
   color: var(--brand-color);
+  line-height: 0.8;
   text-decoration: none;
-  margin: auto;
+  margin-left: 20px;
 }
 /* Navigation container (2/3 of space) */
 nav {
@@ -162,15 +163,15 @@ nav ul li a:hover::after {
 }
 
 #home h1 {
-  font-size: 3rem; /* Increased from 2.5rem */
+  font-size: 4rem; /* Increased from 2.5rem */
   font-weight: bold;
   color: var(--brand-color);
   margin-bottom: 1.5rem; /* Slightly increased margin for better spacing */
   font-family:  var(--font-heading), sans-serif;
   letter-spacing: 2px; /* Added letter spacing */
   line-height: 1.2; /* Improved line height for better readability */
-  -webkit-text-stroke-width: 1px;
-  -webkit-text-stroke-color: white;
+/*   -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: white; */
 }
 
 #home p {
@@ -200,27 +201,6 @@ nav ul li a:hover::after {
 #home a:hover {
   background-color: #af860c;
 }
-
-/* Brand styling for other sections */
-#about,
-#services,
-#articles,
-#partners,
-#faq,
-#contact {
-  font-family:  var(--font-heading), sans-serif;
-  color: var(--brand-color);
-}
-
-#about h2,
-#services h2,
-#faq h2,
-#contact h2 {
-  font-size: 2rem;
-  margin-bottom: 1rem;
-}
-
-/* Add these styles to your style.css file */
 
 /* Hamburger Menu Styles */
 .hamburger {
@@ -255,14 +235,8 @@ nav ul li a:hover::after {
   transform: translateY(-9px) rotate(-45deg);
 }
 
-/* Services Section Styles */
-.container {
-  padding: 2rem var(--section-padding);
-}
-
 #services {
   background-color: #f9f9f9;
-  text-align: center;
 }
 
 #services h2 {
@@ -297,7 +271,7 @@ nav ul li a:hover::after {
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   padding: 2rem;
   flex: 1;
-  max-width: 400px;
+  max-width: 500px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -361,43 +335,6 @@ nav ul li a:hover::after {
   font-size: 1.4rem;
 }
 
-
-
-/* Get Your NIF Section - Updated Layout */
-.get-nif-section {
-  margin-top: 4rem;
-  text-align: center;
-}
-
-.get-nif-title {
-  color: var(--brand-color);
-  font-family:  var(--font-heading), sans-serif;
-  margin-bottom: 2rem;
-  font-size: 2rem;
-  text-align: start;
-}
-
-.get-nif-content {
-  display: flex;
-  align-items: stretch;
-  gap: 40px;
-  text-align: left;
-}
-
-.get-nif-text-content {
-  flex: 1;
-  display: flex;
-  justify-content: space-evenly;
-  flex-direction: column;
-  padding-bottom: 10px;
-}
-
-.get-nif-text p {
-  margin-bottom: 1.5rem;
-  color: #555;
-  line-height: 1.6;
-}
-
 .get-nif-btn {
   background-color: #e0b814;
   color: white;
@@ -418,20 +355,6 @@ nav ul li a:hover::after {
 }
 .get-nif-btn:hover {
   background-color: #af860c;
-}
-
-.get-nif-image {
-  flex: 1;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-}
-
-.get-nif-image img {
-  width: 100%;
-  height: 100%; /* make it fill the container */
-  object-fit: cover; /* crop if needed to fill the square */
-  display: block;
 }
 
 .get-tax-image {
@@ -460,9 +383,6 @@ nav ul li a:hover::after {
   }
   header .spacer {
     display: none;
-  }
-  .logo {
-    width: auto;
   }
   
   nav {
@@ -515,16 +435,6 @@ nav ul li a:hover::after {
     font-size: 1.1rem;
   }
   
-  /* Section titles responsive styles */
-  #about h2,
-  #services h2,
-  #articles h2,
-  #faq h2,
-  #contact h2 {
-    font-size: 1.5rem;
-    text-align: center;
-  }
-  
   header .spacer {
     flex: 1;
   }
@@ -536,30 +446,15 @@ nav ul li a:hover::after {
   
   .service-card {
     max-width: 100%;
-    width: 100%;
   }
-  
-  .get-nif-section {
-    flex-direction: column-reverse;
-  }
-  .get-nif-content {
-    flex-direction: column-reverse;
-  }
+
   .get-nif-btn {
     align-self: center; /* Center button on mobile */
     margin-top: 1rem;
   }
-  .get-nif-text, .get-nif-image {
-    width: 100%;
-  }
-  
+
   #services h2 {
     font-size: 2rem;
-  }
-  
-  .get-nif-text h3 {
-    font-size: 1.8rem;
-    text-align: center;
   }
 
 }
@@ -584,13 +479,7 @@ nav ul li a:hover::after {
   .service-card h3 {
     font-size: 1.3rem;
   }
-  
-  .get-nif-text h3 {
-    font-size: 1.5rem;
-  }
-  .get-nif-title {
-    font-size: 1.8rem;
-  }
+
 }
 
 @media screen and (max-width: 1700px) {
@@ -598,20 +487,21 @@ nav ul li a:hover::after {
     display: none;
   }
 }
+@media screen and (max-width: 1400px) {
+  #home h1 {
+    font-size: 3rem;
+  }
+}
+
 
 
 /* About Page Styles */
-
-/* Container for sections */
-#about-info{
-  height: 67vh;
-}
-
 .about-container {
   padding: 2rem var(--section-padding);
   display: flex;
   flex-direction: column;
   justify-content: center;
+  gap: 20px;
 }
 
 /* Hero Image Section */
@@ -631,14 +521,11 @@ nav ul li a:hover::after {
 .left-aligned {
   font-family: var(--font-heading), sans-serif;
   color: var(--brand-color);
-  margin-bottom: 1.5rem;
   position: relative;
 }
 .right-aligned {
   font-family:  var(--font-heading), sans-serif;
   color: var(--brand-color);
-  font-size: 2.5rem;
-  margin-bottom: 1.5rem;
   position: relative;
   text-align: right;
 }
@@ -669,12 +556,15 @@ nav ul li a:hover::after {
   gap: 40px;
   align-items: center;
 }
+.about-content.stretch {
+  align-items: stretch; /* Center align the items */
+}
 
 .about-text {
   flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: center; /
+  justify-content: center; 
 }
 
 .about-text p {
@@ -691,39 +581,37 @@ nav ul li a:hover::after {
 .about-image img {
   width: 100%;
   height: 100%;
-  max-height: 40vh;
+  max-height: 40vh; /* Limit the height of the image */
   border-radius: 10px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   object-fit: cover;
 }
 
-/* What Motivates Us Section */
-.motivates-content {
-  display: flex;
-  gap: 40px;
-  align-items: center;
+@media screen and (max-width: 1500px) {
+  .about-content{
+    align-items: stretch;
+  }
+  .about-image {
+    align-items: stretch; /* Center align the items */
+  }
+  .about-image img {
+    max-height: unset; /* Allow the image to scale naturally */
+  }
 }
+@media screen and (max-width: 768px) {
+  .about-content {
+    flex-direction: column; /* Stack the text and image vertically */
+    align-items: stretch; /* Center align the items */
+  }
 
-.motivates-image {
-  flex: 1;
-}
+  .about-image {
+    width: 100%; /* Ensure the image takes the full width */
+    height: auto; /* Allow the height to adjust based on the image */
+  }
 
-.motivates-image img {
-  width: 100%;
-  height: auto;
-  border-radius: 10px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-}
-
-.motivates-text {
-  flex: 1;
-}
-
-.motivates-text p {
-  margin-bottom: 1.5rem;
-  font-size: 1.1rem;
-  line-height: 1.6;
-  color: #555;
+  .about-image img {
+    height: auto; /* Allow the image to scale naturally */
+  }
 }
 
 /* Why Choose Us Section */
@@ -736,10 +624,11 @@ nav ul li a:hover::after {
 }
 
 .why-choose-item h3 {
-  font-family:  var(--font-heading), sans-serif;
+  font-family:  Arial;
   color: var(--brand-color);
   margin-bottom: 1rem;
   font-size: 1.3rem;
+  font-weight: bold;
 }
 
 .why-choose-item p {
@@ -775,8 +664,8 @@ nav ul li a:hover::after {
 }
 
 .team-member h3 {
-  font-family:  var(--font-heading), sans-serif;
-  color: var(--brand-color);
+  font-family:  arial;
+  color: black;
   margin-bottom: 0.5rem;
   font-size: 1.2rem;
 }
@@ -786,46 +675,13 @@ nav ul li a:hover::after {
   font-size: 1rem;
 }
 
-/* Which Documents Do I Need Section */
-.documents-section {
-  margin-top: 4rem;
-  text-align: center;
-}
-
-.documents-title {
-  font-family:  var(--font-heading), sans-serif;
-  color: var(--brand-color);
-  font-size: 2rem;
-  margin-bottom: 2rem;
-  text-align: start;
-}
-
-.documents-content {
-  display: flex;
-  align-items: stretch;
-  gap: 12%;
-  text-align: left;
-  /* Removed the flex-direction: row-reverse to keep image on the right */
-}
-
-.documents-image {
-  flex: 1;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-}
-
-.documents-image img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
 
 .documents-text {
   flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  width: 75%;
 }
 
 .documents-intro {
@@ -841,6 +697,7 @@ nav ul li a:hover::after {
   color: #555;
   line-height: 1.6;
   font-size: 1.1rem;
+  font-family: Arial;
 }
 
 .documents-list li {
@@ -862,18 +719,8 @@ nav ul li a:hover::after {
 }
 
 /* As a student. Why should I request a NIF? Section */
-.student-nif-section {
-  text-align: start;
-  margin-top: 4rem;
-}
 
-.student-nif-title {
-  font-family:  var(--font-heading), sans-serif;
-  color: var(--brand-color);
-  font-size: 2rem;
-  margin-bottom: 1.5rem;
-  text-align: start;
-}
+
 
 .student-nif-item {
   margin-bottom: 1.5rem;
@@ -890,7 +737,7 @@ nav ul li a:hover::after {
 }
 
 .student-nif-item h3 {
-  font-family:  var(--font-heading), sans-serif;
+  font-family:  Arial;
   color: black;
   margin-bottom: 0.75rem;
   font-size: 1.2rem;
@@ -903,16 +750,13 @@ nav ul li a:hover::after {
 }
 
 /* Responsive styles */
-@media screen and (max-width: 1095px) {
-  .about-content,
-  .motivates-content {
+@media screen and (max-width: 950px) {
+  .about-content {
     flex-direction: column;
+    align-items: center;
   }
-  
-  .motivates-text {
-    text-align: left;
-    order: -1; /* Move text above image on mobile */
-  }
+}
+@media screen and (max-width: 1095px) {
   
   section h2 {
     font-size: 2rem;
@@ -931,32 +775,17 @@ nav ul li a:hover::after {
   .team-grid {
     grid-template-columns: repeat(2, 1fr);
   }
-  .documents-content {
-    gap: 40px;
-    flex-direction: column-reverse; /* Changed to column-reverse to match your existing mobile layout pattern */
-  }
+
+
   
-  .documents-title {
-    text-align: center;
-    font-size: 1.8rem;
-  }
-  
-  .documents-text, .documents-image {
+  .documents-text {
     width: 100%;
   }
-  .student-nif-title {
-    text-align: center;
-    font-size: 1.8rem;
-  }
+
 }
 
 @media (max-width: 768px) {
   .services-cards,
-  .get-nif-content {
-    flex-direction: column;
-    gap: 2rem;
-  }
-
   .service-card {
     max-width: 100%;
   }
@@ -976,16 +805,11 @@ nav ul li a:hover::after {
   .about-container h2 {
     font-size: 1.8rem;
   }
-  .documents-title {
-    font-size: 1.8rem;
-  }
-  
+
   .documents-intro, .documents-list {
     font-size: 1rem;
   }
-  .student-nif-title {
-    font-size: 1.6rem;
-  }
+
   
   .student-nif-item h3 {
     font-size: 1.2rem;
@@ -996,44 +820,12 @@ nav ul li a:hover::after {
   }
 }
 
-/* As a student. Why should I request a NIF? Section */
-.foreign-student-section {
-  text-align: start;
-  margin-top: 4rem;
-}
-
-.foreign-student-title {
-  font-family:  var(--font-heading), sans-serif;
-  color: var(--brand-color);
-  font-size: 2rem;
-  margin-bottom: 1.5rem;
-}
-
-/* Process Flow Section Styles */
-.process-flow-section {
-  text-align: center;
-  padding-bottom: 4rem;
-  position: relative;
-}
 
 .process-flow-title {
-  font-family:  var(--font-heading), sans-serif;
-  color: var(--brand-color);
-  font-size: 2rem;
-  margin-bottom: 3rem;
   text-align: center;
 }
 
-.process-flow-container {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 2.5rem;
-  max-width: 900px;
-  margin-left: auto;
-  margin-right: auto;
-  position: relative;
-  gap: 5%;
-}
+
 
 .process-step {
   flex: 1;
@@ -1071,7 +863,7 @@ nav ul li a:hover::after {
 .step-content p {
   color: #555;
   line-height: 1.5;
-  text-align: center;
+  text-align: start;
   font-size: 0.95rem;
   margin: auto 0;
 }
@@ -1089,7 +881,6 @@ nav ul li a:hover::after {
   font-family:  var(--font-heading), sans-serif;
   letter-spacing: 1px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-  margin-top: 2rem;
 }
 
 .order-now-btn:hover {
@@ -1100,30 +891,9 @@ nav ul li a:hover::after {
 
 /* Responsive adjustments */
 @media screen and (max-width: 1095px) {
-  .process-flow-container {
-    flex-direction: column;
-    align-items: center;
-    gap: 3rem;
-  }
-  
   .process-step {
     width: 80%;
     max-width: 350px;
-  }
-  
-  .arrow-container {
-    display: none;
-  }
-  
-  /* Add alternative arrows for mobile */
-  .process-step {
-    position: relative;
-  }
-  
-
-  
-  .process-flow-title {
-    font-size: 1.8rem;
   }
 }
 
@@ -1133,49 +903,15 @@ nav ul li a:hover::after {
     padding: 1.2rem;
   }
   
-  .process-flow-title {
-    font-size: 1.5rem;
-  }
-  
   .order-now-btn {
     padding: 0.75rem 2rem;
     font-size: 1.1rem;
   }
 
 }
-
-#three-easy-steps{
-  margin-top: 50px;
-}
-#nif-tax-easy-steps{
-  margin-top: 50px;
-}
-
-/* Only for non european citizens Section */
-.foreign-citizen-section {
-  text-align: start;
-  margin-top: 4rem;
-}
-
-.foreign-citizen-section p{
-  margin-bottom: 1.5rem;
-}
-
-.foreign-citizen-title {
-  font-family:  var(--font-heading), sans-serif;
-  color: var(--brand-color);
-  font-size: 2rem;
-  margin-bottom: 1.5rem;
-}
-
-/* Container for sections */
-.partners-container {
-  padding: 2rem var(--section-padding);
-}
-
 .partners-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 2rem;
   margin-top: 2rem;
   justify-items: center;
@@ -1193,52 +929,18 @@ nav ul li a:hover::after {
 .partners-grid img:hover {
   transform: scale(1.03);
 }
-
-.text-image-row {
-  display: flex;
-  align-items: stretch;
-  gap: 40px;
-  margin: 2rem 0;
-}
-
-.text-column {
-  flex: 1;
-}
-.text-column p {
-  margin-bottom: 1.5rem;
-  font-size: 1.1rem;
-  line-height: 1.6;
-  color: #555;
-}
-.text-column b {
-  margin-bottom: 1.5rem;
-  font-size: 1.1rem;
-  line-height: 1.6;
-  color: #333;
-}
-
-.image-column {
-  flex: 1;
-  display: flex;
-}
-
-.image-column img {
-  width: 100%;
-  object-fit: cover;
-  border-radius: 10px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  height: 100%; /* Match the height of the text container */
-}
-
 /* Responsive: Stack on smaller screens */
 @media screen and (max-width: 992px) {
-  .text-image-row {
+  .contact-grid {
     flex-direction: column;
+    gap: 3rem;
+  }
+  
+  .contact-form-container,
+  .contact-info-container {
+    max-width: 100%;
   }
 
-  .image-column img {
-    height: auto; /* Let it go back to natural height when stacked */
-  }
 }
 
 .faq-list {
@@ -1248,8 +950,6 @@ nav ul li a:hover::after {
 .faq-subtitle {
   font-family:  var(--font-heading), sans-serif;
   color: var(--brand-color);
-  font-size: 1.8rem;
-  margin-bottom: 2rem;
 }
 
 .faq-item {
@@ -1258,7 +958,8 @@ nav ul li a:hover::after {
 }
 
 .faq-question {
-  font-family:  var(--font-heading), sans-serif;
+  font-family: arial;
+  font-weight: bold;
   background: none;
   border: none;
   color: #333;
@@ -1305,7 +1006,7 @@ nav ul li a:hover::after {
 
 /* Contact Section Styles */
 .contact-section {
-  padding: 4rem 0;
+  padding: 2rem 0;
 }
 
 .contact-container {
@@ -1456,19 +1157,6 @@ nav ul li a:hover::after {
   color: var(--brand-color);
 }
 
-/* Responsive styles */
-@media screen and (max-width: 992px) {
-  .contact-grid {
-    flex-direction: column;
-    gap: 3rem;
-  }
-  
-  .contact-form-container,
-  .contact-info-container {
-    max-width: 100%;
-  }
-}
-
 @media screen and (max-width: 480px) {
   .contact-form-container {
     padding: 1.5rem;
@@ -1511,6 +1199,13 @@ nav ul li a:hover::after {
   margin-top: 2rem;
 }
 
+.step-content-text{
+  font-size: 1.8rem;
+  font-family: Arial;
+  color: black;
+  text-align: start;
+}
+
 
 /* ==========================================================================
    Typography
@@ -1525,7 +1220,7 @@ h1, h2, h3, h4, h5, h6 {
 
 h1 { font-size: 3rem; }
 h2 { font-size: 2.5rem; }
-h3 { font-size: 1.8rem; }
+h3 { font-size: 2rem; }
 h4 { font-size: 1.5rem; }
 h5 { font-size: 1.25rem; }
 h6 { font-size: 1rem; }

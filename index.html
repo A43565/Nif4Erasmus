@@ -30,7 +30,7 @@
   </head>
   <body>
     <header>
-      <a href="#home" class="logo">NIF4Erasmus</a>
+      <a href="#home" class="logo">NIF4 <br />Erasmus</a>
       <!-- Add this right after the logo in your header -->
       <div class="hamburger">
         <span></span>
@@ -63,9 +63,11 @@
 
     <!-- Services Section -->
     <section id="services">
-      <div class="container">
+      <!-- Our Services Section -->
+      <div class="about-container">
         <h2>Our Services</h2>
         <p class="services-intro">
+          Ready to take your first step towards moving to Portugal? <br />
           Full support to help you feel at home while you study.
         </p>
 
@@ -73,7 +75,7 @@
           <div class="service-card">
             <h3>NIF</h3>
             <p>
-              The NIF(tax number) is the first document you need when moving to
+              The NIF (tax number) is the first document you need when moving to
               Portugal.
             </p>
             <button
@@ -85,264 +87,222 @@
               </h4>
             </button>
           </div>
-
-          <div class="service-card">
-            <h3>TAX REPRESENTATION</h3>
+        </div>
+      </div>
+      
+      <!-- Get your NIF Section -->
+      <div class="about-container">
+        <h3 class="left-aligned">GET YOUR NIF</h3>
+        <div class="about-content">
+          <div class="about-text ">
+            <p>The NIF (Número de Identificação Fiscal) is your Portuguese tax
+              identification number, and it’s essential for everyday tasks like renting
+              accommodation, opening a bank account or get a public transport free
+              card.
+            </p>    
             <p>
-              Fiscal representtives are in charge of informing you about the
-              rule and regulations of tax.
-            </p>
-            <button class="service-btn"
-              onClick="document.getElementById('nif-tax-easy-steps').scrollIntoView();">
-              <h4>
-                <span class="price-amount">€50</span>
-              </h4>
-            </button>
+              <b>
+                Price: 50€
+
+              </b>
+            </p>         
+            <a class="get-nif-btn" href="form.html" style="text-decoration: none;">ORDER YOUR NIF NOW</a>
+          </div>
+          
+          <div class="about-image">
+            <img
+              src="assets/images/nif-process.jpeg"
+              alt="NIF Application Process"
+            />
           </div>
         </div>
-        <div class="get-nif-section ">
-          <h3 class="get-nif-title left-aligned">Get Your NIF</h3>
-          <div class="get-nif-content">
-            <div class="get-nif-text-content">
-              <div class="get-nif-text">
-                <p>Ready to take your first step towards moving to Portugal?</p>
-                <p>
-                  It all starts with getting your NIF, a must-have for anyone
-                  looking to live, work, study or invest in the country.
-                </p>
-              </div>
-              
-              <a class="get-nif-btn" href="form.html" style="text-decoration: none;">ORDER YOUR NIF NOW</a>
-            </div>
-            
-            <div class="get-nif-image">
-              <img
-                src="assets/images/nif-process.jpeg"
-                alt="NIF Application Process"
-              />
-            </div>
+      </div>
+      <!-- Requirements section -->
+      <div class="about-container">
+        <h3 class="right-aligned">REQUIREMENTS</h3>
+        <div class="about-content">
+          <div class="about-image">
+            <img
+              src="assets/images/documents.jpeg"
+              alt="Required Documents"
+            />
           </div>
-        </div>
-        <!-- Add this after the get-nif-section div -->
-        <div class="documents-section">
-          <h3 class="documents-title left-aligned">Which Documents Do I Need</h3>
-          <div class="documents-content">
-            <div class="documents-image">
-              <img
-                src="assets/images/documents.jpeg"
-                alt="Required Documents"
-              />
-            </div>
-            <div class="documents-text">
-              <p class="documents-intro">You will need just 2 documents:</p>
-              <ul class="documents-list">
+            <div class="about-text" style="display: flex; align-items: center;">
+              <div class="documents-text">
+                <p class="documents-intro">You will need just 2 documents:</p>
+                <ul class="documents-list">
                 <li>
                   A valid identification document
                   <ul class="nested-list">
-                    <li>For EU: National ID Card</li>
-                    <li>For Non-EU: Passport</li>
+                  <li>For EU: National ID Card</li>
+                  <li>For Non-EU: Passport</li>
                   </ul>
                 </li>
                 <li>Proof of address.</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <!-- As a student. Why should I request a NIF? Section -->
-        <div class="student-nif-section ">
-          <h3 class="student-nif-title left-aligned">
-            As a student. Why should I request a NIF?
-          </h3>
+                <p>There are additional requirements for minors and those who were born
+                  in Portugal  or hold Portuguese citizenship</p>
+                </ul>
 
-          <div class="student-nif-item">
-            <h3>ATTEND A LOCAL UNIVERSITY</h3>
-            <p>
-              Some portuguese universities require that erasmus students have a
-              NIF in order to be enrolled.
-            </p>
-          </div>
-
-          <div class="student-nif-item">
-            <h3>GETTING A FREE SUB-23 PUBLIC TRANSPORT CARD</h3>
-            <p>
-              If you are under 23 years old, you are entitled to a free public
-              transport pass, but to make the request you need to have a NIF.
-            </p>
-          </div>
-
-          <div class="student-nif-item">
-            <h3>SIGN A RENTAL CONTRACT</h3>
-            <p>
-              Avoid scams! Your rental agreement must be registered with the tax
-              authority and linked to your NIF to be valid.
-            </p>
-          </div>
-
-          <div class="student-nif-item">
-            <h3>SIGN A MOBILE PHONE CONTRACT</h3>
-            <p>
-              To have a portuguese number you will need to signa phone contract
-              and give your NIF.
-            </p>
-          </div>
-          <div class="student-nif-item">
-            <h3>OPEN A BANK ACCOUNT</h3>
-            <p>To have a portuguese bank account you will need a NIF.</p>
-          </div>
-        </div>
-
-        <!-- Add this after the student-nif-section div -->
-        <div id="three-easy-steps" class="process-flow-section">
-          <h3 class="process-flow-title">GET YOUR NIF IN 3 EASY STEPS!</h3>
-
-          <div class="process-flow-container">
-            <div class="process-step">
-              <div class="step-content">
-                <h3>1. PLACE YOUR ORDER</h3>
-                <p>Fill out our online form and complete the payment.</p>
               </div>
             </div>
-
-            <div class="process-step">
-              <div class="step-content">
-                <h3>2. SIGN YOUR POWER OF ATTORNEY</h3>
-                <p>This allows us to request your NIF on your behalf.</p>
-              </div>
-            </div>
-
-            <div class="process-step">
-              <div class="step-content">
-                <h3>3. RECEIVE YOUR NIF</h3>
-                <p>
-                  You will receive your NIF via email and the official PDF from
-                  Portal das Finanças.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <button class="order-now-btn">ORDER NOW YOUR NIF!</button>
+          
         </div>
       </div>
-
-      <div id="image-spacer-section" style="padding: 0; margin: 0">
-        <img
-          src="assets/images/ponte-dluis.jpeg"
-          alt="Descriptive alt text"
-          style="
-            width: 100%;
-            max-height: 400px;
-            padding: 0;
-            object-fit: cover;
-            display: block;
-          "
-        />
+      <!-- Tax representative Section -->
+      <div class="about-container">
+        <h3 class="left-aligned">GET A TAX REPRESENTATIVE</h3>
+        <div class="about-content">
+          <div class="about-text">
+            <p>
+              <b>ONLY FOR NON EU/EEA CITIZENS</b></p>
+            <p>
+              Getting a tax representative in Portugal is a requirement for non-EU/EEA
+Citizen, in order to obtain a Portuguese NIF.
+            </p>
+            <p>
+              The tax representative is an intermediary who will handle your tax
+obligations and communicate with the Portuguese tax authorities
+(Autoridade Tributária) on your behalf.
+            </p>
+            <p>
+              The price includes requesting the NIF and appointing a tax representative.
+            </p>
+            <p>
+              <b>
+                PRICE: 100 €
+              </b>
+            </p>
+          </div>
+          <div class="about-image">
+            <img
+              src="assets/images/tax-representative.jpeg"
+              alt="Get a tax representative"
+            />
+          </div>
+        </div>
       </div>
-
-      <div class="container">
-        <!-- Only for non european citizens Section -->
-        <div class="foreign-citizen-section">
-          <h3 class="foreign-citizen-title left-aligned">Only for Non-European citizens</h3>
-          <p style="color: black">
-            Already have a NIF? And you just need a tax representative? Or need
-            both?
+      
+      <!--  Why should I request a NIF? Section -->
+      <div class="about-container">
+        <h3 class="s-aligned">
+          WHY SHOULD I REQUEST A NIF?
+        </h3>
+        <ul class="documents-list">
+          <li>
+            <b>ATTEND A LOCAL UNIVERSITY</b>
+            
+            <p>
+              Some Portuguese universities require a NIF for Erasmus students to complete
+their enrollment.
+            </p>
+          </li>
+          <li>
+            <b>GETTING A FREE SUB-23 PUBLIC TRANSPORT CARD</b>
+            
+            <p>
+              If you're under 23 years old, you can get a free public transport pass…but only
+              with a valid NIF.              
+            </p>
+          </li>
+          <li>
+            <b>SIGN A RENTAL CONTRACT</b>
+            
+            <p>
+              Protect yourself from scams! A valid rental contract must be registered with the
+tax office and linked to your NIF.
+            </p>
+          </li>
+          <li>
+            <b>OPEN A BANK ACCOUNT</b>
+            
+          <p>A NIF is mandatory to open and operate a Portuguese bank account.</p>
+          </li>
+          <li>
+            <b>SIGN A MOBILE PHONE CONTRACT</b>
+            
+          <p>
+            Getting a Portuguese number? You'll need a NIF to sign a mobile phone plan.
           </p>
+          </li>
+          
+        </ul>
+      </div>
+      <!-- As a student. Why should I request a NIF? Section -->
+      <div class="about-container">
+        <h3 class="left-aligned">
+          WHY SHOULD I REQUEST A NIF?
+        </h3>
 
-          <p style="color: black">We got you covered!</p>
-        </div>
-        <!-- Tax representative Section -->
-        <div class="get-nif-section">
-          <h3 class="get-nif-title left-aligned">Get a tax representative</h3>
-          <div class="get-nif-content">
-            <div class="get-nif-text">
-              <p>
-                Getting a tax representative in Portugal is a requirement for
-                non EU/EEA Citizen, in order to obtain a Portuguese NIF.
-              </p>
-              <p>
-                The tax representative is an intermediary who will handle your
-                tax obligations and communicate with the Portuguese tax
-                authorities (Autoridade Tributária) on your behalf.
-              </p>
-              <button class="get-nif-btn">GET A TAX REPRESENTATIVE!</button>
-            </div>
-            <div class="get-tax-image">
-              <img
-                src="assets/images/tax-representative.jpeg"
-                alt="Get a tax representative"
-              />
-            </div>
-          </div>
-        </div>
-        <!-- Add this after the get-nif-section div -->
-        <div class="documents-section">
-          <h3 class="documents-title left-aligned">Which Documents Do I Need</h3>
-          <div class="documents-content">
-            <div class="documents-image">
-              <img
-                src="assets/images/documents.jpeg"
-                alt="Required Documents"
-              />
-            </div>
-            <div class="documents-text">
-              <p class="documents-intro">You will need just 2 documents:</p>
-              <ul class="documents-list">
-                <li>
-                  Your NIF number (If you dont have it yet twe can request it for you)
-                </li>
-                <li>A valid identification document.
-                  <ul class="nested-list">
-                    <li>For Non-Eu Citizens: Passport.</li>
-                  </ul>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <!-- As a foreign student. Why do I need a tax representative? Section -->
-        <div class="foreign-student-section">
-          <h3 class="foreign-student-title left-aligned">
-            As a student. Why do I need a tax representative?
-          </h3>
-          <p style="color: black">
-            If you are a non-Eurpoean Union (EU) or European Economic Area (EEA)
-            citizen and you want to obtain a NIF (Número de Identificação
-            Fiscal) in Portugal, you are required to appoint a tax
-            representative.
+        <div class="student-nif-item">
+          <h3>ATTEND A LOCAL UNIVERSITY</h3>
+          <p>
+            Some Portuguese universities require a NIF for Erasmus students to complete
+their enrollment.
+
           </p>
         </div>
-        <!-- Add this after the student-nif-section div -->
-        <section id="nif-tax-easy-steps" class="process-flow-section">
-          <h3 class="process-flow-title">GET YOUR NIF AND TAX REPRESENTATIVE IN 3 EASY STEPS!</h3>
 
-          <div class="process-flow-container">
-            <div class="process-step">
-              <div class="step-content">
-                <h3>1. PLACE YOUR ORDER</h3>
-                <p>Fill out our online form and complete the payment.</p>
-              </div>
-            </div>
+        <div class="student-nif-item">
+          <h3>GETTING A FREE SUB-23 PUBLIC TRANSPORT CARD</h3>
+          <p>
+            If you're under 23 years old, you can get a free public transport pass…but only
+with a valid NIF.
+          </p>
+        </div>
 
-            <div class="process-step">
-              <div class="step-content">
-                <h3>2. SIGN THE DOCUMENTS</h3>
-                <p>We will send you the Power of Attorney and the statement of appointment for you to sign. This allows us to request your NIF on your behalf and to be your tax representant.</p>
-              </div>
-            </div>
+        <div class="student-nif-item">
+          <h3>SIGN A RENTAL CONTRACT</h3>
+          <p>
+            Protect yourself from scams! A valid rental contract must be registered with the
+tax office and linked to your NIF.
+          </p>
+        </div>
+        <div class="student-nif-item">
+          <h3>OPEN A BANK ACCOUNT</h3>
+          <p>A NIF is mandatory to open and operate a Portuguese bank account.</p>
+        </div>
+        <div class="student-nif-item">
+          <h3>SIGN A MOBILE PHONE CONTRACT</h3>
+          <p>
+            Getting a Portuguese number? You'll need a NIF to sign a mobile phone plan.
+          </p>
+        </div>
+       
+      </div>
 
-            <div class="process-step">
-              <div class="step-content">
-                <h3>3. RECEIVE YOUR NIF</h3>
-                <p>
-                  You will receive your NIF with the nomination of us as your tax representative via email with the official PDF from Portal das Finanças.
-                </p>
-              </div>
+      <!-- Add this after the student-nif-section div -->
+      <div id="three-easy-steps" class="about-container">
+        <h3 class="process-flow-title">GET YOUR NIF IN 3 EASY STEPS!</h3>
+
+        <div class="about-content stretch">
+          <div class="process-step">
+            <div class="step-content">
+              <h3 class="step-content-text">PLACE YOUR ORDER</h3>
+              <p>Fill out our online form and complete the payment.</p>
             </div>
           </div>
 
-          <button class="order-now-btn">ORDER NOW YOUR NIF WITH TAX REPRESENTATIVE!</button>
-        </section>
+          <div class="process-step">
+            <div class="step-content">
+              <h3 class="step-content-text">SIGN YOUR POWER OF ATTORNEY</h3>
+              <p>This allows us to request your NIF on your behalf.</p>
+            </div>
+          </div>
+
+          <div class="process-step">
+            <div class="step-content">
+              <h3 class="step-content-text">RECEIVE YOUR NIF</h3>
+              <p>
+                You will receive your NIF via email and the official PDF from
+                Portal das Finanças.
+              </p>
+            </div>
+          </div>
+        </div>
+        <a class="get-nif-btn" href="form.html" style="text-decoration: none;">ORDER NOW YOUR NIF!</a>
       </div>
+
+
     </section>
 
     <script src="scripts/main.js"></script>
