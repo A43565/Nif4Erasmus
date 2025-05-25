@@ -73,7 +73,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-/*   function lockScroll() {
+  function lockScroll() {
     // Store current scroll position
     scrollPosition = window.pageYOffset;
     // Add styles to lock the body
@@ -103,9 +103,9 @@ document.addEventListener("DOMContentLoaded", () => {
     } else {
       unlockScroll();
     }
-  }); */
+  });
   
-/*   navLinks.forEach(link => {
+  navLinks.forEach(link => {
     link.addEventListener('click', function() {
       hamburger.classList.remove('active');
       nav.classList.remove('active');
@@ -122,7 +122,7 @@ document.addEventListener("DOMContentLoaded", () => {
       document.body.classList.remove("no-scroll");
       unlockScroll();
     }
-  }); */
+  });
 
   document.querySelectorAll('.faq-question').forEach(button => {
     button.addEventListener('click', () => {
