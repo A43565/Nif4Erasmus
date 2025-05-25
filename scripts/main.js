@@ -10,23 +10,23 @@ document.addEventListener("DOMContentLoaded", () => {
   let scrollPosition = 0;
   
 
-  // ✅ Update active nav link based on scroll position
+  // Function to update the active link based on the current URL or hash
   function updateActiveLink() {
-    let current = "";
-    sections.forEach((section) => {
-      const sectionTop = section.offsetTop - 160; // Adjust if header changes
-      const sectionHeight = section.offsetHeight;
-
-      if (
-        window.scrollY >= sectionTop &&
-        window.scrollY < sectionTop + sectionHeight
-      ) {
-        current = section.getAttribute("id");
-      }
-    });
+    const currentPath = window.location.pathname; // Get the current page path
+    const currentHash = window.location.hash; // Get the current hash (e.g., #services)
 
     navLinks.forEach((link) => {
-      link.classList.toggle("active", link.getAttribute("href") === `#${current}`);
+      const linkPath = link.getAttribute("href");
+
+      // Check if the link matches the current path or hash
+      if (
+        currentPath.includes(linkPath) || // Match for page links
+        (linkPath.startsWith("#") && linkPath === currentHash) // Match for hash links
+      ) {
+        link.classList.add("active");
+      } else {
+        link.classList.remove("active");
+      }
     });
   }
 
@@ -46,6 +46,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   window.addEventListener("scroll", onScroll);
   updateActiveLink(); // On load
+
+  // Update active link on hash change (for in-page navigation)
+  window.addEventListener("hashchange", updateActiveLink);
 
   // ✅ Smooth scroll fallback for older browsers (optional)
   navLinks.forEach((link) => {
@@ -70,7 +73,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  function lockScroll() {
+/*   function lockScroll() {
     // Store current scroll position
     scrollPosition = window.pageYOffset;
     // Add styles to lock the body
@@ -100,9 +103,9 @@ document.addEventListener("DOMContentLoaded", () => {
     } else {
       unlockScroll();
     }
-  });
+  }); */
   
-  navLinks.forEach(link => {
+/*   navLinks.forEach(link => {
     link.addEventListener('click', function() {
       hamburger.classList.remove('active');
       nav.classList.remove('active');
@@ -119,7 +122,7 @@ document.addEventListener("DOMContentLoaded", () => {
       document.body.classList.remove("no-scroll");
       unlockScroll();
     }
-  });
+  }); */
 
   document.querySelectorAll('.faq-question').forEach(button => {
     button.addEventListener('click', () => {
