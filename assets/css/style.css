@@ -1260,10 +1260,15 @@ p {
   justify-content: space-between;
   gap: 2rem;
   margin-bottom: 2rem;
+  /*text-align: center;*/
+  
 }
 
 .footer-column {
-  flex: 1;
+  flex: 1; 
+  display: flex; /* Add this */
+  flex-direction: column; /* Add this */
+  gap: 1rem; /* Add this */
 }
 
 .footer-column h4 {
@@ -1275,6 +1280,7 @@ p {
 .footer-column ul {
   list-style: none;
   padding: 0;
+  width: 100%; /* Add this */
 }
 
 .footer-column ul li {
@@ -1290,13 +1296,59 @@ p {
 .footer-column a:hover {
   opacity: 0.8;
 }
+.callback-form {
+  width: 100%; /* Add this */
+  display: flex; /* Add this */
+  justify-content: center; /* Add this */
+  flex-direction: column;
+  gap: 0.8rem; /* Add this */
+}
 
 .callback-form .phone-input {
   display: flex;
+  flex-direction: column;
   gap: 0.5rem;
   align-items: center;
+  width: 100%;
+  max-width: 300px;
 }
 
+/* Style the phone input */
+.phone-field {
+  width: 100% !important;
+  padding: 0.5rem !important;
+  padding-left: 90px !important;
+  border-radius: 25px !important;
+  border: none !important;
+  margin: 0 !important;
+}
+
+/* Style the country dropdown */
+.iti {
+  width: 100%;
+}
+
+.iti__flag-container:hover {
+  cursor: pointer;
+}
+.iti__country {
+  color: black;
+}
+
+/* Adjust input padding for the country code */
+.iti--separate-dial-code .iti__phone {
+  padding-left: 6.5rem !important;
+}
+/* Adjust input padding for the country code */
+.iti--separate-dial-code .phone-field {
+  padding-left: 6.5rem !important; /* Increase padding to prevent typing under country code */
+}
+
+/* Fix spacing for the flag container */
+.iti--separate-dial-code.iti--allow-dropdown .iti__flag-container {
+  right: auto;
+  left: 0;
+}
 .callback-form input {
   padding: 0.5rem;
   border-radius: 25px;
@@ -1310,6 +1362,7 @@ p {
   border: none;
   padding: 0.5rem 1rem;
   border-radius: 25px;
+  width: 50%;
   cursor: pointer;
   font-weight: bold;
   transition: background-color 0.3s ease;

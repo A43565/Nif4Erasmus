@@ -140,5 +140,80 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   });
+
+  // Initialize phone input
+  const phoneInput = window.intlTelInput(document.querySelector("#callback-phone"), {
+    preferredCountries: ["pt", "es", "fr", "de", "it"],
+    initialCountry: "pt",
+    separateDialCode: true,
+    utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+  });
+
+  // Create error message element
+  const errorMsg = document.createElement("div");
+  errorMsg.className = "phone-error-msg";
+  errorMsg.style.display = "none";
+  document.querySelector(".phone-input").appendChild(errorMsg);
+
+  // Add these CSS styles for error message
+  const style = document.createElement('style');
+  style.textContent = `
+    .phone-error-msg {
+      color: #dc3545;
+      font-size: 0.875rem;
+      margin-top: 0.25rem;
+      width: 100%;
+      text-align: center;
+    }
+    .phone-field.error {
+      border: 1px solid #dc3545 !important;
+    }
+    .phone-field.valid {
+      border: 1px solid #198754 !important;
+    }
+  `;
+  document.head.appendChild(style);
+
+  // Error messages for different validation errors
+  const errorMap = [
+    "Invalid number",
+    "Invalid country code",
+    "Too short",
+    "Too long",
+    "Invalid number"
+  ];
+
+  // Validation function
+  const validatePhoneNumber = () => {
+    const phoneField = document.querySelector("#callback-phone");
+    phoneField.classList.remove("error", "valid");
+    errorMsg.style.display = "none";
+
+    if (phoneField.value.trim()) {
+      if (phoneInput.isValidNumber()) {
+        phoneField.classList.add("valid");
+        return true;
+      } else {
+        phoneField.classList.add("error");
+        const errorCode = phoneInput.getValidationError();
+        errorMsg.textContent = errorMap[errorCode] || "Invalid number";
+        errorMsg.style.display = "block";
+      }
+    }
+    return false;
+  };
+
+  // Add validation on input
+  document.querySelector("#callback-phone").addEventListener("input", validatePhoneNumber);
+  document.querySelector("#callback-phone").addEventListener("blur", validatePhoneNumber);
+
+  // Validate phone number on form submit
+  document.querySelector(".contact-btn").addEventListener("click", function() {
+    if (validatePhoneNumber()) {
+      const fullNumber = phoneInput.getNumber();
+      console.log(fullNumber); // You can use this number to send to your backend
+      // Here you can add your EmailJS or other service call
+    }
+  });
   
 });
