@@ -4,7 +4,7 @@
 
 @font-face {
   font-family: "Dela Gothic One";
-  src: url("../fonts/dela-gothic.woff2") format("woff2");
+  src: url("../fonts/Dela_Gothic_One/DelaGothicOne-Regular.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -1335,6 +1335,34 @@ p {
   color: black;
 }
 
+/* Keep and update the phone-error-msg styles */
+.phone-error-msg {
+  color: #6e2127;
+  font-size: 0.875rem;
+  margin-top: 0.5rem;
+  width: 100%;
+  text-align: center;
+  background-color: #f8d7da;
+  padding: 0.5rem;
+  border-radius: 4px;
+  font-family: var(--font-body);
+  display: none; /* Add this */
+}
+
+.phone-field.error {
+  border: 1px solid #dc3545 !important;
+  background-color: #fff8f8 !important;
+}
+
+.phone-field.valid {
+  border: 1px solid #198754 !important;
+  background-color: #f8fff9 !important;
+}
+
+.phone-input.error .phone-field {
+  border: 1px solid #dc3545;
+}
+
 /* Adjust input padding for the country code */
 .iti--separate-dial-code .iti__phone {
   padding-left: 6.5rem !important;
@@ -1422,4 +1450,123 @@ p {
     gap: 1rem;
     text-align: center;
   }
+}
+
+/* Form Styles */
+.form-container {
+  width: 80%;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.custom-form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.form-section {
+  border-bottom: 1px solid #eee;
+  padding-bottom: 2rem;
+}
+
+.form-section h3 {
+  color: var(--brand-color);
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.custom-form label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.custom-form input[type="text"],
+.custom-form input[type="email"],
+.custom-form input[type="tel"],
+.custom-form input[type="date"] {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.custom-form input[type="file"] {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px dashed #ddd;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+.file-help {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 0.875rem;
+  color: #666;
+}
+
+.submit-btn {
+  background-color: var(--brand-color);
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 5px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 100%;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.submit-btn:hover {
+  background-color: #0a1ad9;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+  .form-container {
+    padding: 1.5rem;
+    margin: 1rem;
+    width: unset;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Form validation styles */
+.custom-form input:required {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8' viewBox='0 0 8 8'%3E%3Cpath fill='%23ff0000' d='M8 0h-2v2h2v-2zm0 3h-2v5h2v-5z'/%3E%3C/svg%3E");
+  background-position: right 8px center;
+  background-repeat: no-repeat;
+  padding-right: 30px;
+}
+
+.custom-form input:valid {
+  background-image: none;
+}
+
+.custom-form input:focus {
+  outline: none;
+  border-color: var(--brand-color);
 }

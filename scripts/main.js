@@ -8,7 +8,6 @@ document.addEventListener("DOMContentLoaded", () => {
   let lastKnownScrollY = window.scrollY;
   let ticking = false;
   let scrollPosition = 0;
-  
 
   // Function to update the active link based on the current URL or hash
   function updateActiveLink() {
@@ -77,143 +76,287 @@ document.addEventListener("DOMContentLoaded", () => {
     // Store current scroll position
     scrollPosition = window.pageYOffset;
     // Add styles to lock the body
-    body.style.overflow = 'hidden';
-    body.style.position = 'fixed';
+    body.style.overflow = "hidden";
+    body.style.position = "fixed";
     body.style.top = `-${scrollPosition}px`;
-    body.style.width = '100%';
+    body.style.width = "100%";
   }
-  
+
   function unlockScroll() {
     // Remove scroll lock styles
-    body.style.removeProperty('overflow');
-    body.style.removeProperty('position');
-    body.style.removeProperty('top');
-    body.style.removeProperty('width');
+    body.style.removeProperty("overflow");
+    body.style.removeProperty("position");
+    body.style.removeProperty("top");
+    body.style.removeProperty("width");
     // Restore scroll position
     window.scrollTo(0, scrollPosition);
   }
-  
-  hamburger.addEventListener('click', function() {
-    hamburger.classList.toggle('active');
-    nav.classList.toggle('active');
-    body.classList.toggle('no-scroll');
 
-    if (nav.classList.contains('active')) {
+  hamburger.addEventListener("click", function () {
+    hamburger.classList.toggle("active");
+    nav.classList.toggle("active");
+    body.classList.toggle("no-scroll");
+
+    if (nav.classList.contains("active")) {
       lockScroll();
     } else {
       unlockScroll();
     }
   });
-  
-  navLinks.forEach(link => {
-    link.addEventListener('click', function() {
-      hamburger.classList.remove('active');
-      nav.classList.remove('active');
-       document.body.classList.remove("no-scroll");
+
+  navLinks.forEach((link) => {
+    link.addEventListener("click", function () {
+      hamburger.classList.remove("active");
+      nav.classList.remove("active");
+      document.body.classList.remove("no-scroll");
       unlockScroll();
     });
   });
-  
+
   // Close menu when clicking outside
-  document.addEventListener('click', function(event) {
-    if (!hamburger.contains(event.target) && !nav.contains(event.target) && nav.classList.contains('active')) {
-      hamburger.classList.remove('active');
-      nav.classList.remove('active');
+  document.addEventListener("click", function (event) {
+    if (
+      !hamburger.contains(event.target) &&
+      !nav.contains(event.target) &&
+      nav.classList.contains("active")
+    ) {
+      hamburger.classList.remove("active");
+      nav.classList.remove("active");
       document.body.classList.remove("no-scroll");
       unlockScroll();
     }
   });
 
-  document.querySelectorAll('.faq-question').forEach(button => {
-    button.addEventListener('click', () => {
+  document.querySelectorAll(".faq-question").forEach((button) => {
+    button.addEventListener("click", () => {
       const answer = button.nextElementSibling;
-      const isOpen = answer.classList.contains('open');
+      const isOpen = answer.classList.contains("open");
 
       // Close all
-      document.querySelectorAll('.faq-answer').forEach(a => a.classList.remove('open'));
-      document.querySelectorAll('.faq-question').forEach(q => q.classList.remove('active'));
+      document
+        .querySelectorAll(".faq-answer")
+        .forEach((a) => a.classList.remove("open"));
+      document
+        .querySelectorAll(".faq-question")
+        .forEach((q) => q.classList.remove("active"));
 
       // Toggle current
       if (!isOpen) {
-        answer.classList.add('open');
-        button.classList.add('active');
+        answer.classList.add("open");
+        button.classList.add("active");
       }
     });
   });
+  // Initialize EmailJS
+  (function () {
+    emailjs.init("B_OgUkgT3w8lysw_g");
+  })();
+
+  // Form submission handler
+  document
+    .getElementById("contact-form")
+    .addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      // Verify reCAPTCHA
+      const recaptchaResponse = grecaptcha.getResponse();
+      if (!recaptchaResponse) {
+        document.getElementById("form-status").textContent =
+          "Please verify that you are not a robot.";
+        document.getElementById("form-status").className =
+          "form-status error";
+        return;
+      }
+
+      // Get form data
+      const formData = {
+        name: document.getElementById("name").value,
+        email: document.getElementById("email").value,
+        message: document.getElementById("message").value,
+        submitTime: new Date().toLocaleString()
+      };
+
+      // Show loading status
+      document.getElementById("form-status").textContent = "Sending...";
+      document.getElementById("form-status").className =
+        "form-status sending";
+
+      // Send email using EmailJS
+      // Replace with your service ID and template ID
+      emailjs
+        .send(
+          "service_4ekh8ho",
+          "template_00yzatn",
+          formData
+        ).then(
+          function(response) {
+            document.getElementById("form-status").textContent = "Message sent successfully!";
+            document.getElementById("form-status").className = "form-status success";
+            contactForm.reset();
+            grecaptcha.reset();
+          },
+          function(error) {
+            document.getElementById("form-status").textContent = "Failed to send message. Please try again.";
+            document.getElementById("form-status").className = "form-status error";
+            console.error("EmailJS error:", error);
+          }
+        );
+    });
+
+  // Add this after your existing event listeners
+  const personalInfoForm = document.getElementById("personalInfoForm");
+  if (personalInfoForm) {
+    personalInfoForm.addEventListener("submit", function (e) {
+      e.preventDefault(); // Prevent the form from actually submitting
+
+      // Create a FormData object to handle both regular inputs and files
+      const formData = new FormData(this);
+
+      // Create an object to store all form data
+      const formDataObject = {
+        personalDetails: {
+          fullName: formData.get("fullName"),
+          dateOfBirth: formData.get("dateOfBirth"),
+          nationality: formData.get("nationality"),
+          idCard: formData.get("idCard").name, // Get file name
+        },
+        addressInformation: {
+          address: formData.get("address"),
+          zipCode: formData.get("zipCode"),
+          city: formData.get("city"),
+          country: formData.get("country"),
+          proofOfAddress: formData.get("proofOfAddress").name, // Get file name
+        },
+        contactInformation: {
+          email: formData.get("email"),
+          whatsapp: formData.get("whatsapp") || "Not provided",
+        },
+      };
+
+      // Log the collected data
+      console.log("Form Data:", formDataObject);
+
+      // Log file details separately
+      const idCardFile = formData.get("idCard");
+      const proofOfAddressFile = formData.get("proofOfAddress");
+
+      console.log("ID Card File:", {
+        name: idCardFile.name,
+        type: idCardFile.type,
+        size: `${(idCardFile.size / 1024 / 1024).toFixed(2)} MB`,
+      });
+
+      console.log("Proof of Address File:", {
+        name: proofOfAddressFile.name,
+        type: proofOfAddressFile.type,
+        size: `${(proofOfAddressFile.size / 1024 / 1024).toFixed(2)} MB`,
+      });
+
+      // Optional: Show success message to user
+      alert("Form submitted successfully! Check console for data.");
+    });
+  }
 
   // Initialize phone input
-  const phoneInput = window.intlTelInput(document.querySelector("#callback-phone"), {
-    preferredCountries: ["pt", "es", "fr", "de", "it"],
-    initialCountry: "pt",
-    separateDialCode: true,
-    utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
-  });
+  // Contact form handling - Only run if elements exist
+  const callbackPhone = document.querySelector("#callback-phone");
+  const contactBtn = document.querySelector(".contact-btn");
 
-  // Create error message element
-  const errorMsg = document.createElement("div");
-  errorMsg.className = "phone-error-msg";
-  errorMsg.style.display = "none";
-  document.querySelector(".phone-input").appendChild(errorMsg);
+  if (callbackPhone && contactBtn) {
+    const phoneInput = window.intlTelInput(
+      document.querySelector("#callback-phone"),
+      {
+        preferredCountries: ["pt", "es", "fr", "de", "it"],
+        initialCountry: "pt",
+        separateDialCode: true,
+        utilsScript:
+          "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+      }
+    );
 
-  // Add these CSS styles for error message
-  const style = document.createElement('style');
-  style.textContent = `
-    .phone-error-msg {
-      color: #dc3545;
-      font-size: 0.875rem;
-      margin-top: 0.25rem;
-      width: 100%;
-      text-align: center;
+
+    // Create error message element
+    let errorMsg = document.querySelector(".phone-input .phone-error-msg");
+    if (!errorMsg) {
+      // Only create if it doesn't exist
+      errorMsg = document.createElement("div");
+      errorMsg.className = "phone-error-msg";
+      document.querySelector(".phone-input").appendChild(errorMsg);
     }
-    .phone-field.error {
-      border: 1px solid #dc3545 !important;
-    }
-    .phone-field.valid {
-      border: 1px solid #198754 !important;
-    }
-  `;
-  document.head.appendChild(style);
-
-  // Error messages for different validation errors
-  const errorMap = [
-    "Invalid number",
-    "Invalid country code",
-    "Too short",
-    "Too long",
-    "Invalid number"
-  ];
-
-  // Validation function
-  const validatePhoneNumber = () => {
-    const phoneField = document.querySelector("#callback-phone");
-    phoneField.classList.remove("error", "valid");
     errorMsg.style.display = "none";
 
-    if (phoneField.value.trim()) {
-      if (phoneInput.isValidNumber()) {
-        phoneField.classList.add("valid");
-        return true;
-      } else {
-        phoneField.classList.add("error");
-        const errorCode = phoneInput.getValidationError();
-        errorMsg.textContent = errorMap[errorCode] || "Invalid number";
-        errorMsg.style.display = "block";
+    // Replace the error messages with more professional ones
+    const errorMap = [
+      "Please enter a complete phone number",
+      "This country code is not valid",
+      "Phone number is too short",
+      "Phone number is too long",
+      "Please enter a valid phone number for this country",
+    ];
+
+    // Validation function
+    const validatePhoneNumber = () => {
+      const phoneField = document.querySelector("#callback-phone");
+      phoneField.classList.remove("error", "valid");
+      errorMsg.style.display = "none";
+
+      if (phoneField.value.trim()) {
+        if (phoneInput.isValidNumber()) {
+          phoneField.classList.add("valid");
+          return true;
+        } else {
+          phoneField.classList.add("error");
+          const errorCode = phoneInput.getValidationError();
+          errorMsg.textContent =
+            errorMap[errorCode] || "Please provide a valid phone number";
+          errorMsg.style.display = "block";
+        }
       }
-    }
-    return false;
-  };
+      return false;
+    };
 
-  // Add validation on input
-  document.querySelector("#callback-phone").addEventListener("input", validatePhoneNumber);
-  document.querySelector("#callback-phone").addEventListener("blur", validatePhoneNumber);
+    // Add validation on input
+    document
+      .querySelector("#callback-phone")
+      .addEventListener("input", validatePhoneNumber);
+    document
+      .querySelector("#callback-phone")
+      .addEventListener("blur", validatePhoneNumber);
 
-  // Validate phone number on form submit
-  document.querySelector(".contact-btn").addEventListener("click", function() {
-    if (validatePhoneNumber()) {
-      const fullNumber = phoneInput.getNumber();
-      console.log(fullNumber); // You can use this number to send to your backend
-      // Here you can add your EmailJS or other service call
-    }
-  });
-  
+    // Validate phone number on form submit
+    document.querySelector(".contact-btn").addEventListener("click", function () {
+      if (validatePhoneNumber()) {
+        const fullNumber = phoneInput.getNumber();
+        
+        // Show loading state
+        this.textContent = "Sending...";
+        this.disabled = true;
+    
+        // Send email using EmailJS
+        emailjs.send(
+          "service_4ekh8ho",  // Your service ID
+          "template_p42864p",  // Replace with your template ID from EmailJS
+          {
+            phoneNumber: fullNumber,
+            submitTime: new Date().toLocaleString()
+          }
+        ).then(
+          (response) => {
+            // Success
+            alert("Thank you! We'll contact you soon via WhatsApp.");
+            document.querySelector("#callback-phone").value = "";
+            this.textContent = "Contact me";
+            this.disabled = false;
+          },
+          (error) => {
+            // Error
+            alert("Sorry, there was an error. Please try again.");
+            console.error("EmailJS error:", error);
+            this.textContent = "Contact me";
+            this.disabled = false;
+          }
+        );
+      }
+    });
+  }
 });

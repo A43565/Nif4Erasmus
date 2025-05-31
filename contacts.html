@@ -12,16 +12,21 @@
       href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css"
+    />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
-
 
     <!-- External CSS -->
     <link rel="stylesheet" href="assets/css/style.css" />
-    
+
     <!-- EmailJS -->
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-    
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"
+    ></script>
+
     <!-- Google reCAPTCHA -->
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
   </head>
@@ -48,7 +53,7 @@
 
     <!-- Hero Image Section -->
     <div id="about-hero">
-      <img src="assets/images/contact-hero.jpeg" alt="Contact Nif4Erasmus">
+      <img src="assets/images/contact-hero.jpeg" alt="Contact Nif4Erasmus" />
     </div>
 
     <!-- Contact Us Section -->
@@ -59,174 +64,167 @@
         <div class="contact-form-container">
           <form id="contact-form" class="contact-form">
             <div class="form-group">
-              <input type="text" id="name" name="name" placeholder="Name" required>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                placeholder="Name"
+                required
+              />
             </div>
-            
+
             <div class="form-group">
-              <input type="email" id="email" name="email" placeholder="Email" required>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="Email"
+                required
+              />
             </div>
-            
+
             <div class="form-group">
-              <textarea id="message" name="message" placeholder="How can we help you?" rows="5" required></textarea>
+              <textarea
+                id="message"
+                name="message"
+                placeholder="How can we help you?"
+                rows="5"
+                required
+              ></textarea>
             </div>
-            
+
             <div class="form-group">
-              <div class="g-recaptcha" data-sitekey="6LcFxRorAAAAAAqWc0hqJzXdSM6uGA0fOb9gJE9X" data-action="Contact"></div>
+              <div
+                class="g-recaptcha"
+                data-sitekey="6LcFxRorAAAAAAqWc0hqJzXdSM6uGA0fOb9gJE9X"
+                data-action="Contact"
+              ></div>
             </div>
-            
+
             <div class="form-group">
-              <button type="submit" class="send-message-btn">Send message</button>
+              <button type="submit" class="send-message-btn">
+                Send message
+              </button>
             </div>
-            
+
             <div id="form-status" class="form-status"></div>
           </form>
         </div>
-        
-          <!-- Contact Information -->
-          <div class="contact-info-container">
-            <div class="contact-info">
-              <div class="contact-item">
-                <div class="contact-icon">
-                  
-                  <img src="assets/images/email-icon.png" alt="Email" class="icon">
-                </div>
-                <div class="contact-text">
-                  <a href="mailto:beatrizlopes@nif4erasmus.com">beatrizlopes@nif4erasmus.com</a>
-                </div>
+
+        <!-- Contact Information -->
+        <div class="contact-info-container">
+          <div class="contact-info">
+            <div class="contact-item">
+              <div class="contact-icon">
+                <img
+                  src="assets/images/email-icon.png"
+                  alt="Email"
+                  class="icon"
+                />
               </div>
-              
-              <div class="contact-item">
-                <div class="contact-icon">
-                  <img src="assets/images/phone-icon.png" alt="Phone" class="icon">
-                </div>
-                <div class="contact-text">
-                  <a href="tel:+351968073096">+ 351 968073096</a>
-                </div>
+              <div class="contact-text">
+                <a href="mailto:beatrizlopes@nif4erasmus.com"
+                  >beatrizlopes@nif4erasmus.com</a
+                >
               </div>
-              
-              <div class="contact-item">
-                <div class="contact-icon">
-                  <img src="assets/images/location-icon.png" alt="Location" class="icon">
-                </div>
-                <div class="contact-text">
-                  <p>Lisbon, Portugal</p>
-                </div>
+            </div>
+
+            <div class="contact-item">
+              <div class="contact-icon">
+                <img
+                  src="assets/images/phone-icon.png"
+                  alt="Phone"
+                  class="icon"
+                />
               </div>
-              
-              <div class="contact-item">
-                <div class="contact-icon">
-                  <img src="assets/images/hours-icon.png" alt="Hours" class="icon">
-                </div>
-                <div class="contact-text">
-                  <p>Monday to Friday: 9AM - 6PM</p>
-                </div>
+              <div class="contact-text">
+                <a href="tel:+351968073096">+ 351 968073096</a>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <div class="contact-icon">
+                <img
+                  src="assets/images/location-icon.png"
+                  alt="Location"
+                  class="icon"
+                />
+              </div>
+              <div class="contact-text">
+                <p>Lisbon, Portugal</p>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <div class="contact-icon">
+                <img
+                  src="assets/images/hours-icon.png"
+                  alt="Hours"
+                  class="icon"
+                />
+              </div>
+              <div class="contact-text">
+                <p>Monday to Friday: 9AM - 6PM</p>
               </div>
             </div>
           </div>
-        
+        </div>
       </div>
     </section>
-
-    <script>
-      // Initialize EmailJS
-      (function() {
-        // Add your EmailJS user ID
-        emailjs.init("YOUR_EMAILJS_USER_ID");
-      })();
-      
-      // Form submission handler
-      document.getElementById('contact-form').addEventListener('submit', function(event) {
-        event.preventDefault();
-        
-        // Verify reCAPTCHA
-        const recaptchaResponse = grecaptcha.getResponse();
-        if (!recaptchaResponse) {
-          document.getElementById('form-status').textContent = "Please verify that you are not a robot.";
-          document.getElementById('form-status').className = "form-status error";
-          return;
-        }
-        
-        // Get form data
-        const formData = {
-          name: document.getElementById('name').value,
-          email: document.getElementById('email').value,
-          message: document.getElementById('message').value
-        };
-        
-        // Show loading status
-        document.getElementById('form-status').textContent = "Sending...";
-        document.getElementById('form-status').className = "form-status sending";
-        
-        // Send email using EmailJS
-        // Replace with your service ID and template ID
-        emailjs.send('YOUR_EMAILJS_SERVICE_ID', 'YOUR_EMAILJS_TEMPLATE_ID', formData)
-          .then(function(response) {
-            document.getElementById('form-status').textContent = "Message sent successfully!";
-            document.getElementById('form-status').className = "form-status success";
-            document.getElementById('contact-form').reset();
-            grecaptcha.reset();
-          }, function(error) {
-            document.getElementById('form-status').textContent = "Failed to send message. Please try again.";
-            document.getElementById('form-status').className = "form-status error";
-          });
-      });
-    </script>
-        </script>
-
-        <script src="scripts/main.js"></script>
-    
-        <footer class="footer">
-          <div class="footer-content">
-            <!-- Services Column -->
-            <div class="footer-column">
-              <h4>OUR SERVICES</h4>
-              <ul>
-                <li><a href="index.html#services">NIF - Portuguese Tax Number</a></li>
-                <li><a href="index.html#services">Tax Representative</a></li>
-              </ul>
-            </div>
-    
-            <!-- Contacts Column -->
-            <div class="footer-column">
-              <h4>CONTACTS</h4>
-              <ul>
-                <li><a href="tel:+351968073096">+351 968 073 096</a></li>
-                <li><a href="mailto:nif4erasmus@gmail.com">nif4erasmus@gmail.com</a></li>
-              </ul>
-            </div>
-    
-            <!-- Callback Column -->
-            <div class="footer-column">
-              <h4>REQUEST A CALLBACK</h4>
-              <p>Enter your phone number, we will contact by Whatsapp.</p>
-              <div class="callback-form">
-                <div class="phone-input">
-                  <input type="tel" id="callback-phone" class="phone-field">
-                </div>
-                <button class="contact-btn">Contact me</button>
-              </div>
-            </div>
-          </div>
-    
-          <!-- Footer Bottom -->
-          <div class="footer-bottom">
-            <div class="footer-links">
-              <a href="privacy-policy.html">Privacy Policy</a> |
-              <a href="terms-conditions.html">Terms and Conditions</a>
-            </div>
-            <div class="social-links">
-              <a href="https://facebook.com" target="_blank" rel="noopener">
-                <img src="assets/images/facebook-icon.png" alt="Facebook">
-              </a>
-              <a href="https://instagram.com" target="_blank" rel="noopener">
-                <img src="assets/images/instagram-icon.png" alt="Instagram">
-              </a>
-            </div>
-          </div>
-        </footer>
-      </body>
-    </html>
-
     <script src="scripts/main.js"></script>
+
+    <footer class="footer">
+      <div class="footer-content">
+        <!-- Services Column -->
+        <div class="footer-column">
+          <h4>OUR SERVICES</h4>
+          <ul>
+            <li>
+              <a href="index.html#services">NIF - Portuguese Tax Number</a>
+            </li>
+            <li><a href="index.html#services">Tax Representative</a></li>
+          </ul>
+        </div>
+
+        <!-- Contacts Column -->
+        <div class="footer-column">
+          <h4>CONTACTS</h4>
+          <ul>
+            <li><a href="tel:+351968073096">+351 968 073 096</a></li>
+            <li>
+              <a href="mailto:nif4erasmus@gmail.com">nif4erasmus@gmail.com</a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Callback Column -->
+        <div class="footer-column">
+          <h4>REQUEST A CALLBACK</h4>
+          <p>Enter your phone number, we will contact by Whatsapp.</p>
+          <div class="callback-form">
+            <div class="phone-input">
+              <input type="tel" id="callback-phone" class="phone-field" />
+            </div>
+            <button class="contact-btn">Contact me</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer Bottom -->
+      <div class="footer-bottom">
+        <div class="footer-links">
+          <a href="privacy-policy.html">Privacy Policy</a> |
+          <a href="terms-conditions.html">Terms and Conditions</a>
+        </div>
+        <div class="social-links">
+          <a href="https://facebook.com" target="_blank" rel="noopener">
+            <img src="assets/images/facebook-icon.png" alt="Facebook" />
+          </a>
+          <a href="https://instagram.com" target="_blank" rel="noopener">
+            <img src="assets/images/instagram-icon.png" alt="Instagram" />
+          </a>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>
