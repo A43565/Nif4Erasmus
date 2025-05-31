@@ -335,9 +335,9 @@ document.addEventListener("DOMContentLoaded", () => {
         // Send email using EmailJS
         emailjs.send(
           "service_4ekh8ho",  // Your service ID
-          "template_p42864p",  // Replace with your template ID from EmailJS
+          "template_00yzatn",  // Replace with your template ID from EmailJS
           {
-            phoneNumber: fullNumber,
+            email: fullNumber,
             submitTime: new Date().toLocaleString()
           }
         ).then(
