@@ -1,3 +1,9 @@
+import { storage, ref, uploadBytes, getDownloadURL } from './firebase-config.js';
+// Initialize EmailJS
+(function () {
+  emailjs.init("B_OgUkgT3w8lysw_g");
+})();
+
 document.addEventListener("DOMContentLoaded", () => {
   const sections = document.querySelectorAll("section");
   const navLinks = document.querySelectorAll("nav ul li a");
@@ -147,15 +153,11 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   });
-  // Initialize EmailJS
-  (function () {
-    emailjs.init("B_OgUkgT3w8lysw_g");
-  })();
 
   // Form submission handler
-  document
-    .getElementById("contact-form")
-    .addEventListener("submit", function (event) {
+  const contactForm = document.getElementById("contact-form");
+  if (contactForm) {
+    contactForm.addEventListener("submit", function (event) {
       event.preventDefault();
 
       // Verify reCAPTCHA
@@ -163,8 +165,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (!recaptchaResponse) {
         document.getElementById("form-status").textContent =
           "Please verify that you are not a robot.";
-        document.getElementById("form-status").className =
-          "form-status error";
+        document.getElementById("form-status").className = "form-status error";
         return;
       }
 
@@ -173,87 +174,106 @@ document.addEventListener("DOMContentLoaded", () => {
         name: document.getElementById("name").value,
         email: document.getElementById("email").value,
         message: document.getElementById("message").value,
-        submitTime: new Date().toLocaleString()
+        submitTime: new Date().toLocaleString(),
       };
 
       // Show loading status
       document.getElementById("form-status").textContent = "Sending...";
-      document.getElementById("form-status").className =
-        "form-status sending";
+      document.getElementById("form-status").className = "form-status sending";
 
       // Send email using EmailJS
       // Replace with your service ID and template ID
-      emailjs
-        .send(
-          "service_4ekh8ho",
-          "template_00yzatn",
-          formData
-        ).then(
-          function(response) {
-            document.getElementById("form-status").textContent = "Message sent successfully!";
-            document.getElementById("form-status").className = "form-status success";
-            contactForm.reset();
-            grecaptcha.reset();
-          },
-          function(error) {
-            document.getElementById("form-status").textContent = "Failed to send message. Please try again.";
-            document.getElementById("form-status").className = "form-status error";
-            console.error("EmailJS error:", error);
-          }
-        );
+      emailjs.send("service_4ekh8ho", "template_00yzatn", formData).then(
+        function (response) {
+          document.getElementById("form-status").textContent =
+            "Message sent successfully!";
+          document.getElementById("form-status").className =
+            "form-status success";
+          contactForm.reset();
+          grecaptcha.reset();
+        },
+        function (error) {
+          document.getElementById("form-status").textContent =
+            "Failed to send message. Please try again.";
+          document.getElementById("form-status").className =
+            "form-status error";
+          console.error("EmailJS error:", error);
+        }
+      );
     });
+  }
 
-  // Add this after your existing event listeners
+  // Personal Info form handler
   const personalInfoForm = document.getElementById("personalInfoForm");
+
+  async function uploadFile(file, path) {
+    const storageRef = ref(storage, path);
+    const snapshot = await uploadBytes(storageRef, file);
+    return await getDownloadURL(snapshot.ref);
+  }
+
   if (personalInfoForm) {
-    personalInfoForm.addEventListener("submit", function (e) {
-      e.preventDefault(); // Prevent the form from actually submitting
+    personalInfoForm.addEventListener("submit", async function (e) {
+      e.preventDefault();
 
-      // Create a FormData object to handle both regular inputs and files
-      const formData = new FormData(this);
+      const submitBtn = this.querySelector(".submit-btn");
+      submitBtn.textContent = "Submitting...";
+      submitBtn.disabled = true;
 
-      // Create an object to store all form data
-      const formDataObject = {
-        personalDetails: {
-          fullName: formData.get("fullName"),
-          dateOfBirth: formData.get("dateOfBirth"),
-          nationality: formData.get("nationality"),
-          idCard: formData.get("idCard").name, // Get file name
-        },
-        addressInformation: {
-          address: formData.get("address"),
-          zipCode: formData.get("zipCode"),
-          city: formData.get("city"),
-          country: formData.get("country"),
-          proofOfAddress: formData.get("proofOfAddress").name, // Get file name
-        },
-        contactInformation: {
-          email: formData.get("email"),
-          whatsapp: formData.get("whatsapp") || "Not provided",
-        },
-      };
+      try {
+        const formData = new FormData(this);
 
-      // Log the collected data
-      console.log("Form Data:", formDataObject);
+        // Upload files first
+        const idCard = formData.get("idCard");
+        const proofOfAddress = formData.get("proofOfAddress");
 
-      // Log file details separately
-      const idCardFile = formData.get("idCard");
-      const proofOfAddressFile = formData.get("proofOfAddress");
+        const idCardURL = await uploadFile(
+          idCard,
+          `documents/${formData.get("email")}/id-card-${Date.now()}`
+        );
 
-      console.log("ID Card File:", {
-        name: idCardFile.name,
-        type: idCardFile.type,
-        size: `${(idCardFile.size / 1024 / 1024).toFixed(2)} MB`,
-      });
+        const proofOfAddressURL = await uploadFile(
+          proofOfAddress,
+          `documents/${formData.get("email")}/proof-address-${Date.now()}`
+        );
 
-      console.log("Proof of Address File:", {
-        name: proofOfAddressFile.name,
-        type: proofOfAddressFile.type,
-        size: `${(proofOfAddressFile.size / 1024 / 1024).toFixed(2)} MB`,
-      });
+        const formDataObject = {
+          personalDetails: {
+            fullName: formData.get("fullName"),
+            dateOfBirth: formData.get("dateOfBirth"),
+            nationality: formData.get("nationality"),
+            idCard: idCardURL,
+          },
+          addressInformation: {
+            address: formData.get("address"),
+            zipCode: formData.get("zipCode"),
+            city: formData.get("city"),
+            country: formData.get("country"),
+            proofOfAddress: proofOfAddressURL,
+          },
+          contactInformation: {
+            email: formData.get("email"),
+            whatsapp: formData.get("whatsapp") || "Not provided",
+          },
+          submitTime: new Date().toLocaleString(),
+        };
 
-      // Optional: Show success message to user
-      alert("Form submitted successfully! Check console for data.");
+        // Send email with download URLs
+        await emailjs.send(
+          "service_4ekh8ho",
+          "template_p42864p",
+          formDataObject
+        );
+
+        alert("Form submitted successfully! We will contact you soon.");
+        personalInfoForm.reset();
+      } catch (error) {
+        console.error("Error:", error);
+        alert("An error occurred. Please try again.");
+      } finally {
+        submitBtn.textContent = "Submit Application";
+        submitBtn.disabled = false;
+      }
     });
   }
 
@@ -273,7 +293,6 @@ document.addEventListener("DOMContentLoaded", () => {
           "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
       }
     );
-
 
     // Create error message element
     let errorMsg = document.querySelector(".phone-input .phone-error-msg");
@@ -324,39 +343,46 @@ document.addEventListener("DOMContentLoaded", () => {
       .addEventListener("blur", validatePhoneNumber);
 
     // Validate phone number on form submit
-    document.querySelector(".contact-btn").addEventListener("click", function () {
-      if (validatePhoneNumber()) {
-        const fullNumber = phoneInput.getNumber();
-        
-        // Show loading state
-        this.textContent = "Sending...";
-        this.disabled = true;
-    
-        // Send email using EmailJS
-        emailjs.send(
-          "service_4ekh8ho",  // Your service ID
-          "template_00yzatn",  // Replace with your template ID from EmailJS
-          {
-            email: fullNumber,
-            submitTime: new Date().toLocaleString()
-          }
-        ).then(
-          (response) => {
-            // Success
-            alert("Thank you! We'll contact you soon via WhatsApp.");
-            document.querySelector("#callback-phone").value = "";
-            this.textContent = "Contact me";
-            this.disabled = false;
-          },
-          (error) => {
-            // Error
-            alert("Sorry, there was an error. Please try again.");
-            console.error("EmailJS error:", error);
-            this.textContent = "Contact me";
-            this.disabled = false;
-          }
-        );
-      }
-    });
+    const contactButton = document.querySelector(".contact-btn");
+    if (contactButton) {
+      contactButton.addEventListener("click", function () {
+        if (validatePhoneNumber()) {
+          const fullNumber = phoneInput.getNumber();
+
+          // Show loading state
+          this.textContent = "Sending...";
+          this.disabled = true;
+
+          // Send email using EmailJS
+          emailjs
+            .send(
+              "service_4ekh8ho", // Your service ID
+              "template_00yzatn", // Replace with your template ID from EmailJS
+              {
+                email: fullNumber,
+                name: "Callback Request",
+                message: "Please contact me via WhatsApp.",
+                submitTime: new Date().toLocaleString(),
+              }
+            )
+            .then(
+              (response) => {
+                // Success
+                alert("Thank you! We'll contact you soon via WhatsApp.");
+                document.querySelector("#callback-phone").value = "";
+                this.textContent = "Contact me";
+                this.disabled = false;
+              },
+              (error) => {
+                // Error
+                alert("Sorry, there was an error. Please try again.");
+                console.error("EmailJS error:", error);
+                this.textContent = "Contact me";
+                this.disabled = false;
+              }
+            );
+        }
+      });
+    }
   }
 });

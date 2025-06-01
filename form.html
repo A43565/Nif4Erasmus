@@ -12,9 +12,15 @@
       href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap"
       rel="stylesheet"
     />
-
+    <!-- EmailJS -->
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"
+    ></script>
     <!-- External CSS -->
-    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="assets/css/style.css" /> 
+    <!-- Firebase Config -->
+    <script type="module" src="scripts/firebase-config.js"></script>
   </head>
   <body>
     <header>
@@ -39,7 +45,7 @@
 
     <!-- Hero Image Section -->
     <div id="about-hero">
-      <img src="assets/images/partners-hero.jpeg" alt="About Nif4Erasmus">
+      <img src="assets/images/partners-hero.jpeg" alt="About Nif4Erasmus" />
     </div>
 
     <!-- Articles Section -->
@@ -55,94 +61,110 @@
       
     </section> -->
     <!-- ...existing code... -->
-<section id="articles" class="about-container">
-  <h2 class="left-aligned">Personal Information Form</h2>
-  <div class="text-column">
-    <p>Please fill out all required fields marked with an asterisk (*). Ensure all documents are clear and legible.</p>
-  </div>
-  <div class="form-container">
-    <form id="personalInfoForm" class="custom-form">
-      <!-- Personal Details -->
-      <div class="form-section">
-        <h3>Personal Details</h3>
-        <div class="form-group">
-          <label for="fullName">Full Name *</label>
-          <input type="text" id="fullName" name="fullName" required>
-        </div>
-        
-        <div class="form-group">
-          <label for="dateOfBirth">Date of Birth *</label>
-          <input type="date" id="dateOfBirth" name="dateOfBirth" required>
-        </div>
-
-        <div class="form-group">
-          <label for="nationality">Nationality *</label>
-          <input type="text" id="nationality" name="nationality" required>
-        </div>
-
-        <div class="form-group">
-          <label for="idCard">Valid Identification Card *</label>
-          <input type="file" id="idCard" name="idCard" accept=".pdf,.jpg,.jpeg,.png" required>
-          <small class="file-help">Accepted formats: PDF, JPG, PNG (Max 5MB)</small>
-        </div>
+    <section id="articles" class="about-container">
+      <h2 class="left-aligned">Personal Information Form</h2>
+      <div class="text-column">
+        <p>
+          Please fill out all required fields marked with an asterisk (*).
+          Ensure all documents are clear and legible.
+        </p>
       </div>
+      <div class="form-container">
+        <form id="personalInfoForm" class="custom-form">
+          <!-- Personal Details -->
+          <div class="form-section">
+            <h3>Personal Details</h3>
+            <div class="form-group">
+              <label for="fullName">Full Name *</label>
+              <input type="text" id="fullName" name="fullName" required />
+            </div>
 
-      <!-- Address Information -->
-      <div class="form-section">
-        <h3>Address Information</h3>
-        <div class="form-group">
-          <label for="address">Address *</label>
-          <input type="text" id="address" name="address" required>
-        </div>
+            <div class="form-group">
+              <label for="dateOfBirth">Date of Birth *</label>
+              <input type="date" id="dateOfBirth" name="dateOfBirth" required />
+            </div>
 
-        <div class="form-row">
-          <div class="form-group">
-            <label for="zipCode">Zip Code *</label>
-            <input type="text" id="zipCode" name="zipCode" required>
+            <div class="form-group">
+              <label for="nationality">Nationality *</label>
+              <input type="text" id="nationality" name="nationality" required />
+            </div>
+
+            <div class="form-group">
+              <label for="idCard">Valid Identification Card *</label>
+              <input
+                type="file"
+                id="idCard"
+                name="idCard"
+                accept=".pdf,.jpg,.jpeg,.png"
+                required
+              />
+              <small class="file-help"
+                >Accepted formats: PDF, JPG, PNG (Max 5MB)</small
+              >
+            </div>
           </div>
 
-          <div class="form-group">
-            <label for="city">City *</label>
-            <input type="text" id="city" name="city" required>
+          <!-- Address Information -->
+          <div class="form-section">
+            <h3>Address Information</h3>
+            <div class="form-group">
+              <label for="address">Address *</label>
+              <input type="text" id="address" name="address" required />
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="zipCode">Zip Code *</label>
+                <input type="text" id="zipCode" name="zipCode" required />
+              </div>
+
+              <div class="form-group">
+                <label for="city">City *</label>
+                <input type="text" id="city" name="city" required />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="country">Country *</label>
+              <input type="text" id="country" name="country" required />
+            </div>
+
+            <div class="form-group">
+              <label for="proofOfAddress">Proof of Address *</label>
+              <input
+                type="file"
+                id="proofOfAddress"
+                name="proofOfAddress"
+                accept=".pdf,.jpg,.jpeg,.png"
+                required
+              />
+              <small class="file-help"
+                >Accepted formats: PDF, JPG, PNG (Max 5MB)</small
+              >
+            </div>
           </div>
-        </div>
 
-        <div class="form-group">
-          <label for="country">Country *</label>
-          <input type="text" id="country" name="country" required>
-        </div>
+          <!-- Contact Information -->
+          <div class="form-section">
+            <h3>Contact Information</h3>
+            <div class="form-group">
+              <label for="email">Email *</label>
+              <input type="email" id="email" name="email" required />
+            </div>
 
-        <div class="form-group">
-          <label for="proofOfAddress">Proof of Address *</label>
-          <input type="file" id="proofOfAddress" name="proofOfAddress" accept=".pdf,.jpg,.jpeg,.png" required>
-          <small class="file-help">Accepted formats: PDF, JPG, PNG (Max 5MB)</small>
-        </div>
+            <div class="form-group">
+              <label for="whatsapp">WhatsApp Number (Optional)</label>
+              <input type="tel" id="whatsapp" name="whatsapp" />
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="submit-btn">Submit Application</button>
+          </div>
+        </form>
       </div>
-
-      <!-- Contact Information -->
-      <div class="form-section">
-        <h3>Contact Information</h3>
-        <div class="form-group">
-          <label for="email">Email *</label>
-          <input type="email" id="email" name="email" required>
-        </div>
-
-        <div class="form-group">
-          <label for="whatsapp">WhatsApp Number (Optional)</label>
-          <input type="tel" id="whatsapp" name="whatsapp">
-        </div>
-      </div>
-
-      <div class="form-actions">
-        <button type="submit" class="submit-btn">Submit Application</button>
-      </div>
-    </form>
-  </div>
-</section>
-<!-- ...existing code... -->
-
-
-
+    </section>
+    <!-- ...existing code... -->
 
     <script src="scripts/main.js"></script>
   </body>
