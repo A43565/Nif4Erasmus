@@ -1,9 +1,3 @@
-import { storage, ref, uploadBytes, getDownloadURL } from './firebase-config.js';
-// Initialize EmailJS
-(function () {
-  emailjs.init("B_OgUkgT3w8lysw_g");
-})();
-
 document.addEventListener("DOMContentLoaded", () => {
   const sections = document.querySelectorAll("section");
   const navLinks = document.querySelectorAll("nav ul li a");
@@ -11,9 +5,51 @@ document.addEventListener("DOMContentLoaded", () => {
   const nav = document.querySelector("nav");
   const body = document.body;
 
+  // Firebase Configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyD4d93ABAaV4dikgtjLmz7k4Vx6-JUChGs",
+    authDomain: "nif4erasmus-3fb80.firebaseapp.com",
+    projectId: "nif4erasmus-3fb80",
+    storageBucket: "nif4erasmus-3fb80.firebasestorage.app",
+    messagingSenderId: "53708558332",
+    appId: "1:53708558332:web:fbf84088da99ffdfacec79",
+    measurementId: "G-5GFPK7SM1T",
+  };
+
+  // Initialize Firebase
+  
+  firebase.initializeApp(firebaseConfig);
+
+  const storage = firebase.storage();
+
   let lastKnownScrollY = window.scrollY;
   let ticking = false;
   let scrollPosition = 0;
+
+  // Initialize EmailJS
+  (function () {
+    emailjs.init("B_OgUkgT3w8lysw_g");
+  })();
+
+  // Update the uploadFile function to use the storage reference
+  async function uploadFile(file, path) {
+    try {
+      // Add metadata to track uploads
+      const metadata = {
+        customMetadata: {
+          uploadTime: new Date().toISOString(),
+          fileType: file.type,
+        },
+      };
+
+      const storageRef = storage.ref(path);
+      const snapshot = await storageRef.put(file, metadata);
+      return await snapshot.ref.getDownloadURL();
+    } catch (error) {
+      console.error("Upload error:", error);
+      throw error;
+    }
+  }
 
   // Function to update the active link based on the current URL or hash
   function updateActiveLink() {
@@ -205,12 +241,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Personal Info form handler
   const personalInfoForm = document.getElementById("personalInfoForm");
-
-  async function uploadFile(file, path) {
-    const storageRef = ref(storage, path);
-    const snapshot = await uploadBytes(storageRef, file);
-    return await getDownloadURL(snapshot.ref);
-  }
 
   if (personalInfoForm) {
     personalInfoForm.addEventListener("submit", async function (e) {
