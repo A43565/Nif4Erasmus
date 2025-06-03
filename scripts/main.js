@@ -1,6 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-
-
   const sections = document.querySelectorAll("section");
   const navLinks = document.querySelectorAll("nav ul li a");
   const hamburger = document.querySelector(".hamburger");
@@ -26,17 +24,6 @@ document.addEventListener("DOMContentLoaded", () => {
   firebase.initializeApp(firebaseConfig);
 
   const storage = firebase.storage();
-
-  // Load footer
-  fetch("components/footer.html")
-    .then((response) => response.text())
-    .then((data) => {
-      document.body.insertAdjacentHTML("beforeend", data);
-      // Initialize phone input after footer is loaded
-      if (document.querySelector("#callback-phone")) {
-        initializePhoneInput();
-      }
-    });
 
   // Initialize EmailJS
   (function () {
@@ -258,10 +245,20 @@ document.addEventListener("DOMContentLoaded", () => {
   if (personalInfoForm) {
     personalInfoForm.addEventListener("submit", async function (e) {
       e.preventDefault();
+      console.log('Form submission started');
 
       const submitBtn = this.querySelector(".submit-btn");
+      const whatsappInput = this.querySelector("#whatsapp");
+
       submitBtn.textContent = "Submitting...";
       submitBtn.disabled = true;
+
+      // Validate WhatsApp number
+      if (!whatsappInput.value) {
+        alert("Please enter your WhatsApp number");
+        whatsappInput.focus();
+        return;
+      }
 
       try {
         const formData = new FormData(this);
@@ -296,11 +293,23 @@ document.addEventListener("DOMContentLoaded", () => {
           },
           contactInformation: {
             email: formData.get("email"),
-            whatsapp: formData.get("whatsapp") || "Not provided",
+            whatsapp: whatsappInput.value,
+          },
+          serviceDetails: {
+            type: formData.get("service"),
+            price:
+              formData.get("service") === "nifOnly" ? "50,00 €" : "100,00 €",
+            description:
+              formData.get("service") === "nifOnly"
+                ? "NIF (EU/EEA CITIZENS)"
+                : "NIF and TAX REPRESENTATION (NON UE/EEA CITIZEN)",
+
+            selectedService: formData.get("service"), // Add this explicit field
           },
           submitTime: new Date().toLocaleString(),
         };
 
+        console.log('Form data object:', formDataObject);
         // Send email with download URLs
         await emailjs.send(
           "service_4ekh8ho",

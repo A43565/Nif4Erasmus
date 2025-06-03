@@ -42,7 +42,7 @@
       </div>
       <nav>
         <ul>
-          <li><a href="about.html" class="active">ABOUT US</a></li>
+          <li><a href="about.html">ABOUT US</a></li>
           <li><a href="index.html#services">SERVICES</a></li>
           <li><a href="partners.html">PARTNERS</a></li>
           <li><a href="articles.html">ARTICLES</a></li>
@@ -71,7 +71,7 @@
     </section> -->
     <!-- ...existing code... -->
     <section id="articles" class="about-container">
-      <h2 class="left-aligned">Personal Information Form</h2>
+      <h2 class="left-aligned">REQUEST YOUR NIF NOW!</h2>
       <div class="text-column">
         <p>
           Please fill out all required fields marked with an asterisk (*).
@@ -100,6 +100,8 @@
 
             <div class="form-group">
               <label for="idCard">Valid Identification Card *</label>
+              <small>For UE Citizen: National ID card or Passport</br>
+                For Non-UE/EEA Citizen: Passport</small>
               <input
                 type="file"
                 id="idCard"
@@ -111,6 +113,7 @@
                 >Accepted formats: PDF, JPG, PNG (Max 5MB)</small
               >
             </div>
+            
           </div>
 
           <!-- Address Information -->
@@ -140,6 +143,10 @@
 
             <div class="form-group">
               <label for="proofOfAddress">Proof of Address *</label>
+              <small>Please attach certificate of residence, rental contract, utility bill or bank
+                statement, for example.</small>
+                <small><b>IMPORTANT</b> - Must have been issued within the last 3 (three) months and be in
+                  accordance with the information provided on this form.</small>
               <input
                 type="file"
                 id="proofOfAddress"
@@ -162,8 +169,36 @@
             </div>
 
             <div class="form-group">
-              <label for="whatsapp">WhatsApp Number (Optional)</label>
-              <input type="tel" id="whatsapp" name="whatsapp" />
+              <label for="whatsapp">WhatsApp Number *</label>
+              <input type="tel" id="whatsapp" name="whatsapp" required/>
+            </div>
+          </div>
+          
+          <!-- Required Service -->
+          <div class="form-section">
+            <h3>Which service do you need? *</h3>
+            <div class="form-group radio-group">
+              <div class="radio-option">
+                <input 
+                  type="radio" 
+                  id="nifOnly" 
+                  name="service" 
+                  value="nifOnly" 
+                  required 
+                  checked
+                />
+                <label for="nifOnly">NIF (EU/EEA CITIZENS): 50,00 €</label>
+              </div>
+              <div class="radio-option">
+                <input 
+                  type="radio" 
+                  id="nifAndTax" 
+                  name="service" 
+                  value="nifAndTax" 
+                  required 
+                />
+                <label for="nifAndTax">NIF and TAX REPRESENTATION (NON UE/EEA CITIZEN): 100,00 €</label>
+              </div>
             </div>
           </div>
 
