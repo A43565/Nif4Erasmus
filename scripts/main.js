@@ -1,9 +1,15 @@
 document.addEventListener("DOMContentLoaded", () => {
+
+
   const sections = document.querySelectorAll("section");
   const navLinks = document.querySelectorAll("nav ul li a");
   const hamburger = document.querySelector(".hamburger");
   const nav = document.querySelector("nav");
   const body = document.body;
+
+  let lastKnownScrollY = window.scrollY;
+  let ticking = false;
+  let scrollPosition = 0;
 
   // Firebase Configuration
   const firebaseConfig = {
@@ -17,14 +23,20 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   // Initialize Firebase
-
   firebase.initializeApp(firebaseConfig);
 
   const storage = firebase.storage();
 
-  let lastKnownScrollY = window.scrollY;
-  let ticking = false;
-  let scrollPosition = 0;
+  // Load footer
+  fetch("components/footer.html")
+    .then((response) => response.text())
+    .then((data) => {
+      document.body.insertAdjacentHTML("beforeend", data);
+      // Initialize phone input after footer is loaded
+      if (document.querySelector("#callback-phone")) {
+        initializePhoneInput();
+      }
+    });
 
   // Initialize EmailJS
   (function () {
