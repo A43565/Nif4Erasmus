@@ -12,9 +12,22 @@
       href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap"
       rel="stylesheet"
     />
-
+    <!-- EmailJS -->
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"
+    ></script>
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-storage-compat.js"></script>
     <!-- External CSS -->
     <link rel="stylesheet" href="assets/css/style.css" />
+    <!-- Tel Input -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
   </head>
   <body>
     <header>
@@ -39,92 +52,142 @@
 
     <!-- Hero Image Section -->
     <div id="about-hero">
-      <img src="assets/images/faq-hero.jpeg" alt="About Nif4Erasmus">
+      <img src="assets/images/faq-hero.jpeg" alt="About Nif4Erasmus" />
     </div>
 
     <!-- FAQ Title Section -->
     <section id="faq" class="about-container">
       <h2 class="left-aligned">FAQ</h2>
       <div class="about-content-text">
-        <p>At NIF4Erasmus, we understand that navigating the Erasmus experience can raise many questions, specially when it comes to managing your NIF and understanding the tax system abroad.</p>
-        <p>In this section, we've gathered answers to the most common questions from students just like you, if you can't find what you're looking for, feel free to reach out to us for further assistance!</p>
+        <p>
+          At NIF4Erasmus, we understand that navigating the Erasmus experience
+          can raise many questions, specially when it comes to managing your NIF
+          and understanding the tax system abroad.
+        </p>
+        <p>
+          In this section, we've gathered answers to the most common questions
+          from students just like you, if you can't find what you're looking
+          for, feel free to reach out to us for further assistance!
+        </p>
       </div>
       <!-- about NIF Section -->
       <div class="faq-list">
         <h3 class="faq-subtitle">... about NIF</h3>
-      
+
         <div class="faq-item">
           <button class="faq-question">What is a NIF?</button>
           <div class="faq-answer">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque commodo malesuada elit, vitae ornare nisi. Phasellus semper sem ac metus iaculis, nec euismod sem vestibulum.</p>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque
+              commodo malesuada elit, vitae ornare nisi. Phasellus semper sem ac
+              metus iaculis, nec euismod sem vestibulum.
+            </p>
           </div>
         </div>
-      
+
         <div class="faq-item">
-          <button class="faq-question">Can I get a NIF without being in Portugal?</button>
+          <button class="faq-question">
+            Can I get a NIF without being in Portugal?
+          </button>
           <div class="faq-answer">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque commodo malesuada elit, vitae ornare nisi. Phasellus semper sem ac metus iaculis, nec euismod sem vestibulum.</p>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque
+              commodo malesuada elit, vitae ornare nisi. Phasellus semper sem ac
+              metus iaculis, nec euismod sem vestibulum.
+            </p>
           </div>
         </div>
-      
+
         <div class="faq-item">
-          <button class="faq-question">How long does it take to get my NIF?</button>
+          <button class="faq-question">
+            How long does it take to get my NIF?
+          </button>
           <div class="faq-answer">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque commodo malesuada elit, vitae ornare nisi. Phasellus semper sem ac metus iaculis, nec euismod sem vestibulum.</p>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque
+              commodo malesuada elit, vitae ornare nisi. Phasellus semper sem ac
+              metus iaculis, nec euismod sem vestibulum.
+            </p>
           </div>
         </div>
         <div class="faq-item">
-          <button class="faq-question">Which nationalities does NIF4Erasmus support for this NIF service?</button>
+          <button class="faq-question">
+            Which nationalities does NIF4Erasmus support for this NIF service?
+          </button>
           <div class="faq-answer">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque commodo malesuada elit, vitae ornare nisi. Phasellus semper sem ac metus iaculis, nec euismod sem vestibulum.</p>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque
+              commodo malesuada elit, vitae ornare nisi. Phasellus semper sem ac
+              metus iaculis, nec euismod sem vestibulum.
+            </p>
           </div>
         </div>
         <div class="faq-item">
           <button class="faq-question">What documents do I need?</button>
           <div class="faq-answer">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque commodo malesuada elit, vitae ornare nisi. Phasellus semper sem ac metus iaculis, nec euismod sem vestibulum.</p>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque
+              commodo malesuada elit, vitae ornare nisi. Phasellus semper sem ac
+              metus iaculis, nec euismod sem vestibulum.
+            </p>
           </div>
         </div>
         <div class="faq-item">
-          <button class="faq-question">What can I use as proof of address?</button>
+          <button class="faq-question">
+            What can I use as proof of address?
+          </button>
           <div class="faq-answer">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque commodo malesuada elit, vitae ornare nisi. Phasellus semper sem ac metus iaculis, nec euismod sem vestibulum.</p>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque
+              commodo malesuada elit, vitae ornare nisi. Phasellus semper sem ac
+              metus iaculis, nec euismod sem vestibulum.
+            </p>
           </div>
         </div>
-      
       </div>
       <!-- about Tax Representative Section -->
       <div class="faq-list">
-        <h3 class="faq-subtitle">... about TAX  REPRESENTATIVE</h3>
-      
+        <h3 class="faq-subtitle">... about TAX REPRESENTATIVE</h3>
+
         <div class="faq-item">
           <button class="faq-question">Who needs a TAX REPRESENTATIVE?</button>
           <div class="faq-answer">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque commodo malesuada elit, vitae ornare nisi. Phasellus semper sem ac metus iaculis, nec euismod sem vestibulum.</p>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque
+              commodo malesuada elit, vitae ornare nisi. Phasellus semper sem ac
+              metus iaculis, nec euismod sem vestibulum.
+            </p>
           </div>
         </div>
-      
+
         <div class="faq-item">
-          <button class="faq-question">Who will be my TAX REPRESENTATIVE in Portugal?</button>
+          <button class="faq-question">
+            Who will be my TAX REPRESENTATIVE in Portugal?
+          </button>
           <div class="faq-answer">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque commodo malesuada elit, vitae ornare nisi. Phasellus semper sem ac metus iaculis, nec euismod sem vestibulum.</p>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque
+              commodo malesuada elit, vitae ornare nisi. Phasellus semper sem ac
+              metus iaculis, nec euismod sem vestibulum.
+            </p>
           </div>
         </div>
-      
+
         <div class="faq-item">
-          <button class="faq-question">Can I change my TAX REPRESENTATIVE</button>
+          <button class="faq-question">
+            Can I change my TAX REPRESENTATIVE
+          </button>
           <div class="faq-answer">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque commodo malesuada elit, vitae ornare nisi. Phasellus semper sem ac metus iaculis, nec euismod sem vestibulum.</p>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque
+              commodo malesuada elit, vitae ornare nisi. Phasellus semper sem ac
+              metus iaculis, nec euismod sem vestibulum.
+            </p>
           </div>
         </div>
-        
-      
       </div>
-      
-  
-      
     </section>
-    
+
     <footer class="footer">
       <div class="footer-content">
         <!-- Services Column -->
@@ -178,9 +241,6 @@
         </div>
       </div>
     </footer>
-
-
-
     <script src="scripts/main.js"></script>
   </body>
 </html>
