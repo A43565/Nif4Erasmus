@@ -1346,12 +1346,17 @@ p {
   font-family: var(--font-heading);
   margin-bottom: 1.5rem;
   color: white;
+  font-size: 1.3rem;
 }
 
 .footer-column ul {
   list-style: none;
   padding: 0;
   width: 100%; /* Add this */
+}
+
+.footer-column p{
+  font-size: 1rem;
 }
 
 .footer-column ul li {
