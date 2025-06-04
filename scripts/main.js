@@ -19,6 +19,10 @@ document.addEventListener("DOMContentLoaded", () => {
     appId: "1:53708558332:web:fbf84088da99ffdfacec79",
     measurementId: "G-5GFPK7SM1T",
   };
+  const STRIPE_PAYMENT_LINKS = {
+    nifOnly: "https://buy.stripe.com/test_aFa7sKeHj27zcUr5c38k800",
+    nifAndTax: "your_nif_and_tax_payment_link_here",
+  };
 
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
@@ -251,13 +255,15 @@ document.addEventListener("DOMContentLoaded", () => {
       const submitBtn = this.querySelector(".submit-btn");
       const whatsappInput = this.querySelector("#whatsapp");
 
-      submitBtn.textContent = "Submitting...";
+      submitBtn.textContent = "Redirecting...";
       submitBtn.disabled = true;
 
       // Validate WhatsApp number
       if (!whatsappInput.value) {
         alert("Please enter your WhatsApp number");
         whatsappInput.focus();
+        submitBtn.textContent = "Proceed to Payment";
+        submitBtn.disabled = false;
         return;
       }
 
@@ -313,6 +319,11 @@ document.addEventListener("DOMContentLoaded", () => {
           submitTime: new Date().toLocaleString(),
         };
 
+        // Store form data in sessionStorage
+        sessionStorage.setItem(
+          "formSubmission",
+          JSON.stringify(formDataObject)
+        );
         console.log("Form data object:", formDataObject);
         // Send email with download URLs
         await emailjs.send(
@@ -321,13 +332,28 @@ document.addEventListener("DOMContentLoaded", () => {
           formDataObject
         );
 
-        alert("Form submitted successfully! We will contact you soon.");
-        form.reset();
+        // Get the selected service
+        const selectedService = formData.get("service");
+        const paymentLink = STRIPE_PAYMENT_LINKS[selectedService];
+
+        if (!paymentLink) {
+          throw new Error("Invalid service selection");
+        }
+
+        // 3. Create the success URL with parameters
+        const successUrl = new URL(`${window.location.origin}/success.html`);
+        successUrl.searchParams.append("payment_status", "success");
+        successUrl.searchParams.append("service", selectedService);
+        // 5. Redirect to Stripe payment with success URL
+        const stripeUrl = new URL(paymentLink);
+        stripeUrl.searchParams.append("success_url", successUrl.toString());
+        // Redirect to Stripe payment link
+        // 6. Redirect to payment
+        window.location.href = stripeUrl.toString();
       } catch (error) {
         console.error("Error:", error);
         alert("An error occurred. Please try again.");
-      } finally {
-        submitBtn.textContent = "Submit Application";
+        submitBtn.textContent = "Proceed to Payment";
         submitBtn.disabled = false;
       }
     });
@@ -336,18 +362,20 @@ document.addEventListener("DOMContentLoaded", () => {
       button.addEventListener("click", () => {
         const currentSection = button.closest(".form-section");
         const currentStep = parseInt(currentSection.dataset.step);
-    
+
         // Special validation for service selection (Step 1)
         if (currentStep === 1) {
-          const serviceInputs = currentSection.querySelectorAll('input[name="service"]');
+          const serviceInputs = currentSection.querySelectorAll(
+            'input[name="service"]'
+          );
           let serviceSelected = false;
-    
-          serviceInputs.forEach(input => {
+
+          serviceInputs.forEach((input) => {
             if (input.checked) {
               serviceSelected = true;
             }
           });
-    
+
           if (!serviceSelected) {
             alert("Please select a service option before proceeding.");
             return;
@@ -358,7 +386,7 @@ document.addEventListener("DOMContentLoaded", () => {
             "input[required], textarea[required]"
           );
           let isValid = true;
-    
+
           inputs.forEach((input) => {
             if (!input.value) {
               isValid = false;
@@ -367,13 +395,13 @@ document.addEventListener("DOMContentLoaded", () => {
               input.classList.remove("error");
             }
           });
-    
+
           if (!isValid) {
             alert("Please fill in all required fields before proceeding.");
             return;
           }
         }
-    
+
         // Proceed to next section
         currentSection.classList.remove("active");
         const nextSection = form.querySelector(
@@ -521,6 +549,37 @@ document.addEventListener("DOMContentLoaded", () => {
             );
         }
       });
+    }
+  }
+  if (window.location.pathname === '/success.html') {
+    const urlParams = new URLSearchParams(window.location.search);
+    const paymentStatus = urlParams.get('payment_status');
+    
+    if (paymentStatus === 'success') {
+      // Retrieve form data from sessionStorage
+      const formData = JSON.parse(sessionStorage.getItem('formSubmission'));
+      
+      if (formData) {
+        // Send email with form data
+        emailjs.send(
+          "service_4ekh8ho",
+          "template_p42864p",
+          formData
+        ).then(
+          function(response) {
+            console.log("Email sent successfully:", response);
+            // Clear the session storage after successful email
+            sessionStorage.removeItem('formSubmission');
+          },
+          function(error) {
+            console.error("Failed to send email:", error);
+            // You might want to add some error handling UI here
+          }
+        );
+      }
+    } else {
+      // Redirect to home if payment status is not success
+      window.location.href = '/';
     }
   }
 });
