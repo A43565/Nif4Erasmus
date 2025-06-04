@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
   };
   const STRIPE_PAYMENT_LINKS = {
     nifOnly: "https://buy.stripe.com/test_aFa7sKeHj27zcUr5c38k800",
-    nifAndTax: "your_nif_and_tax_payment_link_here",
+    nifAndTax: "https://buy.stripe.com/test_dRm3cubv79A18EbeMD8k801",
   };
 
   // Initialize Firebase
