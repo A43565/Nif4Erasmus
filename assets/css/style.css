@@ -1762,6 +1762,9 @@ p {
   .team-grid{
     display: flex;
   }
+  .footer-content {
+    flex-direction: column;
+  }
 }
 
 /* Large devices (laptops/desktops, 1024px and down) */
