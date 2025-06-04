@@ -554,7 +554,8 @@ document.addEventListener("DOMContentLoaded", () => {
   if (window.location.pathname === '/success.html') {
     const urlParams = new URLSearchParams(window.location.search);
     const paymentStatus = urlParams.get('payment_status');
-    
+    console.log("Payment Status:", paymentStatus);
+    console.log("Payment Status:", sessionStorage.getItem('formSubmission'));
     if (paymentStatus === 'success') {
       // Retrieve form data from sessionStorage
       const formData = JSON.parse(sessionStorage.getItem('formSubmission'));
