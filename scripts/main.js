@@ -547,30 +547,26 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
   // Handle success page logic
-  
-console.log("Current pathname:", window.location.pathname);
-  if (window.location.pathname.includes('Nif4Erasmus/success.html')) { 
+
+  console.log("Current pathname:", window.location.pathname);
+  if (window.location.pathname.includes("Nif4Erasmus/success.html")) {
     const urlParams = new URLSearchParams(window.location.search);
-    const paymentStatus = urlParams.get('payment_status');
+    const paymentStatus = urlParams.get("payment_status");
     console.log("Payment Status:", paymentStatus);
-    console.log("Payment Status:", sessionStorage.getItem('formSubmission'));
-    if (paymentStatus === 'success') {
+    console.log("Payment Status:", sessionStorage.getItem("formSubmission"));
+    if (paymentStatus === "success") {
       // Retrieve form data from sessionStorage
-      const formData = JSON.parse(sessionStorage.getItem('formSubmission'));
-      
+      const formData = JSON.parse(sessionStorage.getItem("formSubmission"));
+
       if (formData) {
         // Send email with form data
-        emailjs.send(
-          "service_4ekh8ho",
-          "template_p42864p",
-          formData
-        ).then(
-          function(response) {
+        emailjs.send("service_4ekh8ho", "template_p42864p", formData).then(
+          function (response) {
             console.log("Email sent successfully:", response);
             // Clear the session storage after successful email
-            sessionStorage.removeItem('formSubmission');
+            sessionStorage.removeItem("formSubmission");
           },
-          function(error) {
+          function (error) {
             console.error("Failed to send email:", error);
             // You might want to add some error handling UI here
           }
@@ -578,7 +574,7 @@ console.log("Current pathname:", window.location.pathname);
       }
     } else {
       // Redirect to home if payment status is not success
-      window.location.href = '/';
+      window.location.href = "/index.html";
     }
   }
 });
