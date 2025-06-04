@@ -336,14 +336,20 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         // 3. Create the success URL with parameters
+        console.log("Selected service:", selectedService);
+        console.log("Payment link:", paymentLink);
+        console.log(window.location.origin);
         const successUrl = new URL(`${window.location.origin}/success.html`);
+        console.log("Success URL:", successUrl);
         successUrl.searchParams.append("payment_status", "success");
         successUrl.searchParams.append("service", selectedService);
         // 5. Redirect to Stripe payment with success URL
         const stripeUrl = new URL(paymentLink);
+        console.log("Stripe URL:", stripeUrl);
         stripeUrl.searchParams.append("success_url", successUrl.toString());
         // Redirect to Stripe payment link
         // 6. Redirect to payment
+        console.log("Redirecting to Stripe payment link:", stripeUrl.toString());
         window.location.href = stripeUrl.toString();
       } catch (error) {
         console.error("Error:", error);
