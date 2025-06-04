@@ -326,11 +326,6 @@ document.addEventListener("DOMContentLoaded", () => {
         );
         console.log("Form data object:", formDataObject);
         // Send email with download URLs
-        await emailjs.send(
-          "service_4ekh8ho",
-          "template_p42864p",
-          formDataObject
-        );
 
         // Get the selected service
         const selectedService = formData.get("service");
@@ -551,7 +546,10 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }
   }
-  if (window.location.pathname === '/success.html') {
+  // Handle success page logic
+  
+console.log("Current pathname:", window.location.pathname);
+  if (window.location.pathname.includes('Nif4Erasmus/success.html')) { 
     const urlParams = new URLSearchParams(window.location.search);
     const paymentStatus = urlParams.get('payment_status');
     console.log("Payment Status:", paymentStatus);
