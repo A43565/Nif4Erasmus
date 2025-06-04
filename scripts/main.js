@@ -240,10 +240,12 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // Personal Info form handler
-  const personalInfoForm = document.getElementById("personalInfoForm");
-
-  if (personalInfoForm) {
-    personalInfoForm.addEventListener("submit", async function (e) {
+  // Form navigation handling
+  const form = document.getElementById("personalInfoForm");
+  if (form) {
+    const sections = form.querySelectorAll(".form-section");
+    const progressSteps = form.querySelectorAll(".progress-step");
+    form.addEventListener("submit", async function (e) {
       e.preventDefault();
 
       const submitBtn = this.querySelector(".submit-btn");
@@ -306,12 +308,12 @@ document.addEventListener("DOMContentLoaded", () => {
             selectedService: formData.get("service"), // Add this explicit field
           },
           referralInfo: {
-            source: formData.get("referralSource")
+            source: formData.get("referralSource"),
           },
           submitTime: new Date().toLocaleString(),
         };
 
-        console.log('Form data object:', formDataObject);
+        console.log("Form data object:", formDataObject);
         // Send email with download URLs
         await emailjs.send(
           "service_4ekh8ho",
@@ -320,7 +322,7 @@ document.addEventListener("DOMContentLoaded", () => {
         );
 
         alert("Form submitted successfully! We will contact you soon.");
-        personalInfoForm.reset();
+        form.reset();
       } catch (error) {
         console.error("Error:", error);
         alert("An error occurred. Please try again.");
@@ -329,8 +331,90 @@ document.addEventListener("DOMContentLoaded", () => {
         submitBtn.disabled = false;
       }
     });
-  }
+    // Next button handler
+    form.querySelectorAll(".next-btn").forEach((button) => {
+      button.addEventListener("click", () => {
+        const currentSection = button.closest(".form-section");
+        const currentStep = parseInt(currentSection.dataset.step);
+    
+        // Special validation for service selection (Step 1)
+        if (currentStep === 1) {
+          const serviceInputs = currentSection.querySelectorAll('input[name="service"]');
+          let serviceSelected = false;
+    
+          serviceInputs.forEach(input => {
+            if (input.checked) {
+              serviceSelected = true;
+            }
+          });
+    
+          if (!serviceSelected) {
+            alert("Please select a service option before proceeding.");
+            return;
+          }
+        } else {
+          // Regular validation for other steps
+          const inputs = currentSection.querySelectorAll(
+            "input[required], textarea[required]"
+          );
+          let isValid = true;
+    
+          inputs.forEach((input) => {
+            if (!input.value) {
+              isValid = false;
+              input.classList.add("error");
+            } else {
+              input.classList.remove("error");
+            }
+          });
+    
+          if (!isValid) {
+            alert("Please fill in all required fields before proceeding.");
+            return;
+          }
+        }
+    
+        // Proceed to next section
+        currentSection.classList.remove("active");
+        const nextSection = form.querySelector(
+          `.form-section[data-step="${currentStep + 1}"]`
+        );
+        if (nextSection) {
+          nextSection.classList.add("active");
+          updateProgress(currentStep + 1);
+        }
+      });
+    });
 
+    // Previous button handler
+    form.querySelectorAll(".prev-btn").forEach((button) => {
+      button.addEventListener("click", () => {
+        const currentSection = button.closest(".form-section");
+        const currentStep = parseInt(currentSection.dataset.step);
+
+        currentSection.classList.remove("active");
+        const prevSection = form.querySelector(
+          `.form-section[data-step="${currentStep - 1}"]`
+        );
+        if (prevSection) {
+          prevSection.classList.add("active");
+          updateProgress(currentStep - 1);
+        }
+      });
+    });
+
+    // Update progress bar
+    function updateProgress(step) {
+      progressSteps.forEach((progressStep) => {
+        const stepNum = parseInt(progressStep.dataset.step);
+        if (stepNum <= step) {
+          progressStep.classList.add("active");
+        } else {
+          progressStep.classList.remove("active");
+        }
+      });
+    }
+  }
   // Initialize phone input
   // Contact form handling - Only run if elements exist
   const callbackPhone = document.querySelector("#callback-phone");
