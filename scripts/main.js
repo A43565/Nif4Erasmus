@@ -245,7 +245,6 @@ document.addEventListener("DOMContentLoaded", () => {
   if (personalInfoForm) {
     personalInfoForm.addEventListener("submit", async function (e) {
       e.preventDefault();
-      console.log('Form submission started');
 
       const submitBtn = this.querySelector(".submit-btn");
       const whatsappInput = this.querySelector("#whatsapp");
@@ -305,6 +304,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 : "NIF and TAX REPRESENTATION (NON UE/EEA CITIZEN)",
 
             selectedService: formData.get("service"), // Add this explicit field
+          },
+          referralInfo: {
+            source: formData.get("referralSource")
           },
           submitTime: new Date().toLocaleString(),
         };
