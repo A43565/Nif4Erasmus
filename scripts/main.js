@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const navLinks = document.querySelectorAll("nav ul li a");
   const hamburger = document.querySelector(".hamburger");
   const nav = document.querySelector("nav");
-  const body = document.body;
+
 
   let lastKnownScrollY = window.scrollY;
   let ticking = false;
@@ -73,7 +73,21 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   }
+  // Add this at the start
+  function updateScrollPadding() {
+    const header = document.querySelector('header');
+    const headerHeight = header.offsetHeight;
+    const topMargin = 20; // The header's top margin
+    const totalOffset = headerHeight + topMargin + 20; // Adding extra 20px for spacing
+    
+    document.documentElement.style.setProperty('--scroll-padding', `${totalOffset}px`);
+  }
 
+  // Run on load
+  updateScrollPadding();
+
+  // Run on resize
+  window.addEventListener('resize', updateScrollPadding);
   // ✅ Scroll event handler (optimized)
   function onScroll() {
     lastKnownScrollY = window.scrollY;
@@ -349,7 +363,10 @@ document.addEventListener("DOMContentLoaded", () => {
         stripeUrl.searchParams.append("success_url", successUrl.toString());
         // Redirect to Stripe payment link
         // 6. Redirect to payment
-        console.log("Redirecting to Stripe payment link:", stripeUrl.toString());
+        console.log(
+          "Redirecting to Stripe payment link:",
+          stripeUrl.toString()
+        );
         window.location.href = stripeUrl.toString();
       } catch (error) {
         console.error("Error:", error);
@@ -558,25 +575,24 @@ document.addEventListener("DOMContentLoaded", () => {
   if (window.location.pathname.includes("success.html")) {
     const formDataString = sessionStorage.getItem("formSubmission");
     console.log("Retrieved form data:", formDataString);
-  
+
     if (formDataString) {
       try {
         // Parse the stored JSON string back to an object
         const formData = JSON.parse(formDataString);
         console.log("Parsed form data:", formData);
-  
+
         // Send email with the parsed form data
-        emailjs.send("service_4ekh8ho", "template_p42864p", formData)
-          .then(
-            function(response) {
-              console.log("Email sent successfully:", response);
-              // Clear the session storage after successful email
-              sessionStorage.removeItem("formSubmission");
-            },
-            function(error) {
-              console.error("Failed to send email:", error);
-            }
-          );
+        emailjs.send("service_4ekh8ho", "template_p42864p", formData).then(
+          function (response) {
+            console.log("Email sent successfully:", response);
+            // Clear the session storage after successful email
+            sessionStorage.removeItem("formSubmission");
+          },
+          function (error) {
+            console.error("Failed to send email:", error);
+          }
+        );
       } catch (error) {
         console.error("Error parsing form data:", error);
       }
