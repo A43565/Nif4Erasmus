@@ -1844,8 +1844,10 @@ p {
 @media screen and (max-width: 1024px) {
   /* Navigation */
   .hamburger { display: flex; }
-  header { padding: 1rem; }
-  header .spacer { display: none; }
+  header { 
+    padding: 1rem; 
+   }
+
 
   nav {
     position: fixed;
@@ -1896,7 +1898,21 @@ p {
     margin-bottom: 0;
   }
 }
-
+@media screen and (min-width: 1151px) and (max-width: 1276px) {
+  header {
+    gap: 15vw;
+  }
+}
+@media screen and (min-width: 1090px) and (max-width: 1151px) {
+  header {
+    gap: 10vw;
+  }
+}
+@media screen and (min-width: 1024px) and (max-width: 1090px) {
+  header {
+    gap: 5vw;
+  }
+}
 /* Extra large devices (large desktops, 1200px and up) */
 @media screen and (max-width: 1200px) {
   #home h1 { font-size: 3rem; }
