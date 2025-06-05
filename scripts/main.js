@@ -555,27 +555,34 @@ document.addEventListener("DOMContentLoaded", () => {
   // Handle success page logic
 
   console.log("Current pathname:", window.location.pathname);
-  if (window.location.pathname.includes("Nif4Erasmus/success.html")) {
-    const paymentForm = sessionStorage.getItem("formSubmission")
-    console.log("Payment Status:", paymentForm);
-    if (paymentForm) {
-
-        // Send email with form data
-        emailjs.send("service_4ekh8ho", "template_p42864p", paymentForm).then(
-          function (response) {
-            console.log("Email sent successfully:", response);
-            // Clear the session storage after successful email
-            sessionStorage.removeItem("formSubmission");
-          },
-          function (error) {
-            console.error("Failed to send email:", error);
-            // You might want to add some error handling UI here
-          }
-        );
-      
+  if (window.location.pathname.includes("success.html")) {
+    const formDataString = sessionStorage.getItem("formSubmission");
+    console.log("Retrieved form data:", formDataString);
+  
+    if (formDataString) {
+      try {
+        // Parse the stored JSON string back to an object
+        const formData = JSON.parse(formDataString);
+        console.log("Parsed form data:", formData);
+  
+        // Send email with the parsed form data
+        emailjs.send("service_4ekh8ho", "template_p42864p", formData)
+          .then(
+            function(response) {
+              console.log("Email sent successfully:", response);
+              // Clear the session storage after successful email
+              sessionStorage.removeItem("formSubmission");
+            },
+            function(error) {
+              console.error("Failed to send email:", error);
+            }
+          );
+      } catch (error) {
+        console.error("Error parsing form data:", error);
+      }
     } else {
-      // Redirect to home if payment status is not success
-      window.location.href = "Nif4Erasmus/index.html";
+      // Redirect to home if no form data
+      window.location.href = "/index.html";
     }
   }
 });
