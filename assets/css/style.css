@@ -1751,6 +1751,49 @@ p {
   height: auto;
 }
 
+
+.privacy-section h3 {
+  color: var(--brand-color);
+  margin: 1.5rem 0 1rem;
+}
+#pp{
+  margin-top: 10vh;
+}
+
+.privacy-section p {
+  margin-bottom: 1rem;
+  line-height: 1.6;
+  font-size: 1rem;
+  text-align: justify;
+}
+
+.privacy-subsection-indicator{
+  font-weight: bold;
+  color: var(--brand-color);
+}
+.privacy-section ul {
+  margin: 1rem 0 1rem 2rem;
+  list-style-type: disc;
+}
+.privacy-subsection{
+  display: flex; 
+  flex-direction: row;
+  gap: 5px;
+}
+
+.privacy-section ul li {
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.privacy-date {
+  margin-top: 3rem;
+  font-style: italic;
+  color: #666;
+  text-align: right;
+}
+
 /* Responsive adjustments */
 @media screen and (max-width: 768px) {
   .article-date {
