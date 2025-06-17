@@ -4,7 +4,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const hamburger = document.querySelector(".hamburger");
   const nav = document.querySelector("nav");
 
-
   let lastKnownScrollY = window.scrollY;
   let ticking = false;
   let scrollPosition = 0;
@@ -75,19 +74,22 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   // Add this at the start
   function updateScrollPadding() {
-    const header = document.querySelector('header');
+    const header = document.querySelector("header");
     const headerHeight = header.offsetHeight;
     const topMargin = 20; // The header's top margin
     const totalOffset = headerHeight + topMargin + 20; // Adding extra 20px for spacing
-    
-    document.documentElement.style.setProperty('--scroll-padding', `${totalOffset}px`);
+
+    document.documentElement.style.setProperty(
+      "--scroll-padding",
+      `${totalOffset}px`
+    );
   }
 
   // Run on load
   updateScrollPadding();
 
   // Run on resize
-  window.addEventListener('resize', updateScrollPadding);
+  window.addEventListener("resize", updateScrollPadding);
   // ✅ Scroll event handler (optimized)
   function onScroll() {
     lastKnownScrollY = window.scrollY;
@@ -601,4 +603,26 @@ document.addEventListener("DOMContentLoaded", () => {
       window.location.href = "/index.html";
     }
   }
+
+  // Add the Intersection Observer code here
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("active");
+        }
+      });
+    },
+    {
+      threshold: 0.1,
+      rootMargin: "0px 0px -50px 0px",
+    }
+  );
+
+  // Observe all elements with fade-in-up class
+  document
+    .querySelectorAll(".fade-in-up, .fade-in-left, .fade-in-right")
+    .forEach((el) => {
+      observer.observe(el);
+    });
 });

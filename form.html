@@ -136,7 +136,7 @@
                 <button type="button" class="next-btn">Next</button>
               </div>
             </div>
-            <!-- Step 1: Personal Details -->
+            <!-- Step 2: Personal Details -->
             <div class="form-section" data-step="2">
               <h3>Personal Details</h3>
               <!-- ...existing personal details fields... -->
@@ -176,7 +176,7 @@
               </div>
             </div>
 
-            <!-- Step 2: Address Information -->
+            <!-- Step 3: Address Information -->
             <div class="form-section" data-step="3">
               <h3>Address Information</h3>
               <!-- ...existing address fields... -->
@@ -225,7 +225,7 @@
               </div>
             </div>
 
-            <!-- Step 3: Contact Information -->
+            <!-- Step 4: Contact Information -->
             <div class="form-section" data-step="4">
               <h3>Contact Information</h3>
               <!-- ...existing contact fields... -->
@@ -243,25 +243,71 @@
                 <button type="button" class="next-btn">Next</button>
               </div>
             </div>
-            <!-- Step 4: Contact Information -->
+            <!-- Step 5: Contact Information -->
             <div class="form-section" data-step="5">
-            <h3>Who told you about us?</h3>
-              <!-- ...existing contact fields... -->
-              <div class="form-group">
-                <textarea 
-                  id="referralSource" 
-                  name="referralSource" 
-                  rows="3" 
-                  required 
-                  placeholder="Please let us know how you found out about our services..."
-                ></textarea>
+              <h3>Who told you about us? </h3>
+              <p class="referral-subtitle">Spill the beans! We're curious, where did you first hear about us?</p>
+              <p class="referral-instruction">Please, pick all that apply:</p>
+              
+              <div class="form-group checkbox-group">
+                <div class="checkbox-option">
+                  <input type="checkbox" id="instagram" name="referralSource" value="Instagram">
+                  <label for="instagram">Instagram</label>
+                </div>
+                
+                <div class="checkbox-option">
+                  <input type="checkbox" id="tiktok" name="referralSource" value="TikTok">
+                  <label for="tiktok">TikTok</label>
+                </div>
+                
+                <div class="checkbox-option">
+                  <input type="checkbox" id="google" name="referralSource" value="Google Search">
+                  <label for="google">Google Search</label>
+                </div>
+                
+                <div class="checkbox-option">
+                  <input type="checkbox" id="facebook" name="referralSource" value="Facebook">
+                  <label for="facebook">Facebook</label>
+                </div>
+                
+                <div class="checkbox-option">
+                  <input type="checkbox" id="friend" name="referralSource" value="Friend">
+                  <label for="friend">From a friend or other Erasmus student</label>
+                </div>
+                
+                <div class="checkbox-option">
+                  <input type="checkbox" id="university" name="referralSource" value="University">
+                  <label for="university">University</label>
+                </div>
+                
+                <div class="checkbox-option">
+                  <input type="checkbox" id="partners" name="referralSource" value="Partners">
+                  <label for="partners">Our Partners</label>
+                </div>
+                
+                <div class="checkbox-option">
+                  <input type="checkbox" id="whatsapp-ref" name="referralSource" value="WhatsApp">
+                  <label for="whatsapp-ref">WhatsApp or Telegram group</label>
+                </div>
+                
+                <div class="checkbox-option">
+                  <input type="checkbox" id="reddit" name="referralSource" value="Reddit">
+                  <label for="reddit">Reddit or online forum</label>
+                </div>
+                
+                <div class="checkbox-option other-option">
+                  <input type="checkbox" id="other" name="referralSource" value="Other">
+                  <label for="other">Other (please specify):</label>
+                  <input type="text" id="otherSource" name="otherSource" class="other-input">
+                </div>
               </div>
+
               <div class="form-navigation">
                 <button type="button" class="prev-btn">Previous</button>
                 <button type="submit" class="submit-btn">Proceed to Payment</button>
               </div>
             </div>
-            
+                        
           </div>
         </form>
       </div>
