@@ -330,29 +330,17 @@ document.addEventListener("DOMContentLoaded", () => {
             selectedService: formData.get("service"), // Add this explicit field
           },
           referralInfo: {
-            source:
-              formData.get("referralSourceInstagram") +
-              "," +
-              formData.get("referralSourceTikTok") +
-              "," +
-              formData.get("referralSourceGoogle") +
-              "," +
-              formData.get("referralSourceFacebook") +
-              "," +
-              formData.get("referralSourceFriend") +
-              "," +
-              formData.get("referralSourceUniversity") +
-              "," +
-              formData.get("referralSourcePartners") +
-              "," +
-              formData.get("referralSourceWhatsApp") +
-              "," +
-              formData.get("referralSourceReddit") +
-              "," +
-              formData.get("otherSource") +
-              "," +
-              formData.get("referralSource"),
-          },
+                    source: Array.from(document.querySelectorAll('input[name="referralSource[]"]:checked'))
+                        .map(checkbox => {
+                            if (checkbox.id === 'other') {
+                                const otherText = document.getElementById('otherSource').value;
+                                return otherText ? `Other: ${otherText}` : 'Other';
+                            }
+                            return checkbox.value;
+                        })
+                        .filter(Boolean)
+                        .join(', ')
+                },
           submitTime: new Date().toLocaleString(),
         };
 
