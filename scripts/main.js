@@ -46,8 +46,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const storageRef = storage.ref(path);
       const snapshot = await storageRef.put(file, metadata);
-      console.log("File uploaded successfully:", snapshot);
-      return await snapshot.ref.getDownloadURL();
+      //const metadataResult = await snapshot.ref.getMetadata();
+      //console.log("File uploaded successfully:", metadataResult);
+      return true //"https://console.firebase.google.com/u/0/project/nif4erasmus-3fb80/storage/"+metadataResult.bucket+"/files//"+metadataResult.fullPath;
+      //return await snapshot.ref.getDownloadURL();
     } catch (error) {
       console.error("Upload error:", error);
       throw error;
@@ -291,32 +293,34 @@ document.addEventListener("DOMContentLoaded", () => {
         const idCard = formData.get("idCard");
         const proofOfAddress = formData.get("proofOfAddress");
 
-        const idCardURL = await uploadFile(
+        await uploadFile(
           idCard,
           `documents/${formData.get("email")}/id-card-${Date.now()}`
         );
 
-        const proofOfAddressURL = await uploadFile(
+        await uploadFile(
           proofOfAddress,
           `documents/${formData.get("email")}/proof-address-${Date.now()}`
         );
+        const email = formData.get("email");
+        const firebaseConsoleUrl = "https://console.firebase.google.com/u/0/project/nif4erasmus-3fb80/storage/nif4erasmus-3fb80.firebasestorage.app/files//documents/"+email;
 
         const formDataObject = {
           personalDetails: {
             fullName: formData.get("fullName"),
             dateOfBirth: formData.get("dateOfBirth"),
             nationality: formData.get("nationality"),
-            idCard: idCardURL,
+            idCard: firebaseConsoleUrl,
           },
           addressInformation: {
             address: formData.get("address"),
             zipCode: formData.get("zipCode"),
             city: formData.get("city"),
             country: formData.get("country"),
-            proofOfAddress: proofOfAddressURL,
+            proofOfAddress: firebaseConsoleUrl,
           },
           contactInformation: {
-            email: formData.get("email"),
+            email: email,
             whatsapp: whatsappInput.value,
           },
           serviceDetails: {
