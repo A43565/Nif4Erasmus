@@ -46,6 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const storageRef = storage.ref(path);
       const snapshot = await storageRef.put(file, metadata);
+      console.log("File uploaded successfully:", snapshot);
       return await snapshot.ref.getDownloadURL();
     } catch (error) {
       console.error("Upload error:", error);
