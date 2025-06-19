@@ -331,17 +331,24 @@ document.addEventListener("DOMContentLoaded", () => {
             selectedService: formData.get("service"), // Add this explicit field
           },
           referralInfo: {
-                    source: Array.from(document.querySelectorAll('input[name="referralSource[]"]:checked'))
-                        .map(checkbox => {
-                            if (checkbox.id === 'other') {
-                                const otherText = document.getElementById('otherSource').value;
-                                return otherText ? `Other: ${otherText}` : 'Other';
-                            }
-                            return checkbox.value;
-                        })
-                        .filter(Boolean)
-                        .join(', ')
-                },
+            source: Array.from(
+              document.querySelectorAll(
+                'input[name="referralSource[]"]:checked'
+              )
+            )
+              .map((checkbox) => {
+                if (checkbox.id === "other") {
+                  const otherText =
+                    document.getElementById("otherSource").value;
+                  return otherText ? `Other: ${otherText}` : null;
+                }
+                return checkbox.value;
+              })
+              .filter(
+                (value) => value !== null && value !== undefined && value !== ""
+              )
+              .join(", "),
+          },
           submitTime: new Date().toLocaleString(),
         };
 
