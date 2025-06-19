@@ -303,7 +303,7 @@ document.addEventListener("DOMContentLoaded", () => {
           `documents/${formData.get("email")}/proof-address-${Date.now()}`
         );
         const email = formData.get("email");
-        const firebaseConsoleUrl = "https://console.firebase.google.com/u/0/project/nif4erasmus-3fb80/storage/nif4erasmus-3fb80.firebasestorage.app/files/~2Fdocuments~2Fafonsosantos584@hotmail.com"//"https://console.firebase.google.com/u/0/project/nif4erasmus-3fb80/storage/nif4erasmus-3fb80.firebasestorage.app/files/documents/"+email;
+        const firebaseConsoleUrl = "https://console.firebase.google.com/u/0/project/nif4erasmus-3fb80/storage/nif4erasmus-3fb80.firebasestorage.app/files/~2Fdocuments~2F"+email;
 
         const formDataObject = {
           personalDetails: {
