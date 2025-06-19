@@ -330,7 +330,28 @@ document.addEventListener("DOMContentLoaded", () => {
             selectedService: formData.get("service"), // Add this explicit field
           },
           referralInfo: {
-            source: formData.get("referralSource"),
+            source:
+              formData.get("referralSourceInstagram") +
+              "," +
+              formData.get("referralSourceTikTok") +
+              "," +
+              formData.get("referralSourceGoogle") +
+              "," +
+              formData.get("referralSourceFacebook") +
+              "," +
+              formData.get("referralSourceFriend") +
+              "," +
+              formData.get("referralSourceUniversity") +
+              "," +
+              formData.get("referralSourcePartners") +
+              "," +
+              formData.get("referralSourceWhatsApp") +
+              "," +
+              formData.get("referralSourceReddit") +
+              "," +
+              formData.get("otherSource") +
+              "," +
+              formData.get("referralSource"),
           },
           submitTime: new Date().toLocaleString(),
         };
