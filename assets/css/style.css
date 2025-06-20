@@ -1744,7 +1744,9 @@ p {
 }
 
 .article-content p {
-  color: #555;
+    font-family: Arial, sans-serif;
+  color: black;
+  font-weight: bold;
   font-size: 0.95rem;
   line-height: 1.5;
   display: -webkit-box;
