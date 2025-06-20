@@ -303,7 +303,7 @@ document.addEventListener("DOMContentLoaded", () => {
           `documents/${formData.get("email")}/proof-address-${Date.now()}`
         );
         const email = formData.get("email");
-        const firebaseConsoleUrl = "https://console.firebase.google.com/u/0/project/nif4erasmus-3fb80/storage/nif4erasmus-3fb80.firebasestorage.app/files/~2Fdocuments~2F"+email;
+        const firebaseConsoleUrl = "https://console.firebase.google.com/u/0/project/nif4erasmus-3fb80/storage/nif4erasmus-3fb80.firebasestorage.app/files/~2Fdocuments~2F" + email;
 
         const formDataObject = {
           personalDetails: {
@@ -398,6 +398,9 @@ document.addEventListener("DOMContentLoaded", () => {
         submitBtn.disabled = false;
       }
     });
+
+
+
     // Next button handler
     form.querySelectorAll(".next-btn").forEach((button) => {
       button.addEventListener("click", () => {
@@ -416,6 +419,13 @@ document.addEventListener("DOMContentLoaded", () => {
               serviceSelected = true;
             }
           });
+          // Check consent checkboxes
+          const termsCheckbox = currentSection.querySelector('#acceptTerms');
+          const privacyCheckbox = currentSection.querySelector('#acceptPrivacy');
+          if (!termsCheckbox.checked || !privacyCheckbox.checked) {
+            alert("Please accept the Terms and Conditions and the Privacy Policy before proceeding.");
+            return;
+          }
 
           if (!serviceSelected) {
             alert("Please select a service option before proceeding.");
