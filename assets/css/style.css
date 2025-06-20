@@ -2201,3 +2201,29 @@ p {
     transform: scale(0.75);
   }
 }
+
+#article {
+  font-family: Arial, sans-serif;
+  color: black;
+}
+#article .left-aligned {
+  font-family: Arial, sans-serif;
+  color: black;
+}
+#article .left-aligned::after {
+  background-color: black;
+}
+ #article h3, #article h4, #article h5, #article h6 {
+  font-family: Arial, sans-serif;
+  color: black;
+  font-weight: lighter;
+}
+#article h1, #article h2{
+  font-family: Arial, sans-serif;
+  color: black;
+  font-weight: bold;
+}
+#article li {
+  font-family: Arial, sans-serif;
+  color: black;
+}
