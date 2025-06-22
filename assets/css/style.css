@@ -410,6 +410,11 @@ nav ul li a:hover::after {
   color: var(--brand-color);
   position: relative;
 }
+.left-aligned .brand-typo{
+  font-family: var(--font-heading), sans-serif;
+  color: var(--brand-color);
+  position: relative;
+}
 .right-aligned {
   font-family: var(--font-heading), sans-serif;
   color: var(--brand-color);
@@ -1776,9 +1781,7 @@ p {
 }
 
 .article-body p {
-  font-size: 1.1rem;
   line-height: 1.8;
-  color: #333;
   text-align: justify;
 }
 
@@ -1946,6 +1949,11 @@ p {
     font-size: 1rem;
     line-height: 1.6;
   }
+  #article li {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
 }
 /* Responsive adjustments */
 
@@ -2226,6 +2234,7 @@ p {
   font-weight: bold;
 }
 #article li {
+  font-size: 1.2rem;
   font-family: Arial, sans-serif;
   color: black;
 }
