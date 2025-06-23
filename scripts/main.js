@@ -19,8 +19,8 @@ document.addEventListener("DOMContentLoaded", () => {
     measurementId: "G-5GFPK7SM1T",
   };
   const STRIPE_PAYMENT_LINKS = {
-    nifOnly: "https://buy.stripe.com/28E8wO1Ub1I40SN2Ttbsc02",
-    nifAndTax: "https://buy.stripe.com/dRm00ibuL5Yk44ZgKjbsc01",
+    nifOnly: "https://buy.stripe.com/test_aFa7sKeHj27zcUr5c38k800",
+    nifAndTax: "https://buy.stripe.com/test_dRm3cubv79A18EbeMD8k801",
   };
 
   // Initialize Firebase
@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const snapshot = await storageRef.put(file, metadata);
       //const metadataResult = await snapshot.ref.getMetadata();
       //console.log("File uploaded successfully:", metadataResult);
-      return true //"https://console.firebase.google.com/u/0/project/nif4erasmus-3fb80/storage/"+metadataResult.bucket+"/files//"+metadataResult.fullPath;
+      return true; //"https://console.firebase.google.com/u/0/project/nif4erasmus-3fb80/storage/"+metadataResult.bucket+"/files//"+metadataResult.fullPath;
       //return await snapshot.ref.getDownloadURL();
     } catch (error) {
       console.error("Upload error:", error);
@@ -274,7 +274,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const submitBtn = this.querySelector(".submit-btn");
       const whatsappInput = this.querySelector("#whatsapp");
 
-      submitBtn.textContent = "Redirecting...";
+      submitBtn.innerHTML = 'Redirecting<span class="dot-anim"></span>';
       submitBtn.disabled = true;
 
       // Validate WhatsApp number
@@ -303,7 +303,9 @@ document.addEventListener("DOMContentLoaded", () => {
           `documents/${formData.get("email")}/proof-address-${Date.now()}`
         );
         const email = formData.get("email");
-        const firebaseConsoleUrl = "https://console.firebase.google.com/u/0/project/nif4erasmus-3fb80/storage/nif4erasmus-3fb80.firebasestorage.app/files/~2Fdocuments~2F" + email;
+        const firebaseConsoleUrl =
+          "https://console.firebase.google.com/u/0/project/nif4erasmus-3fb80/storage/nif4erasmus-3fb80.firebasestorage.app/files/~2Fdocuments~2F" +
+          email;
 
         const formDataObject = {
           personalDetails: {
@@ -399,8 +401,6 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
 
-
-
     // Next button handler
     form.querySelectorAll(".next-btn").forEach((button) => {
       button.addEventListener("click", () => {
@@ -420,10 +420,13 @@ document.addEventListener("DOMContentLoaded", () => {
             }
           });
           // Check consent checkboxes
-          const termsCheckbox = currentSection.querySelector('#acceptTerms');
-          const privacyCheckbox = currentSection.querySelector('#acceptPrivacy');
+          const termsCheckbox = currentSection.querySelector("#acceptTerms");
+          const privacyCheckbox =
+            currentSection.querySelector("#acceptPrivacy");
           if (!termsCheckbox.checked || !privacyCheckbox.checked) {
-            alert("Please accept the Terms and Conditions and the Privacy Policy before proceeding.");
+            alert(
+              "Please accept the Terms and Conditions and the Privacy Policy before proceeding."
+            );
             return;
           }
 
@@ -432,6 +435,19 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
           }
         } else {
+          // Add email validation for step 4
+          if (currentStep === 4) {
+            const emailInput = currentSection.querySelector(
+              'input[type="email"]'
+            );
+            if (emailInput && !emailInput.checkValidity()) {
+              emailInput.classList.add("error");
+              emailInput.reportValidity(); // Show browser's warning
+              return;
+            } else if (emailInput) {
+              emailInput.classList.remove("error");
+            }
+          }
           // Regular validation for other steps
           const inputs = currentSection.querySelectorAll(
             "input[required], textarea[required]"
