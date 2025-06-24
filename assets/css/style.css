@@ -1922,6 +1922,52 @@ p {
 .fade-in-right-delay-2 {
   transition-delay: 0.4s;
 }
+
+#article {
+  font-family: Arial, sans-serif;
+  color: black;
+}
+#article .left-aligned {
+  font-family: Arial, sans-serif;
+  color: black;
+}
+#article .left-aligned-brand {
+  font-family: var(--font-heading), sans-serif;
+  color: var(--brand-color);
+  position: relative;
+}
+#article .left-aligned::after {
+  background-color: black;
+}
+#article .left-aligned-brand::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 80px;
+  height: 4px;
+  background-color: var(--brand-color);
+}
+#article h3,
+#article h4,
+#article h5,
+#article h6 {
+  font-family: Arial, sans-serif;
+  color: black;
+  font-weight: lighter;
+}
+#article h1,
+#article h2 {
+  font-family: Arial, sans-serif;
+  color: black;
+  font-weight: bold;
+}
+#article li {
+  font-family: var(--font-body), sans-serif;
+  font-size: 1.2rem;
+  color: black;
+}
+
 /* Responsive adjustments */
 @media screen and (max-width: 768px) {
   .partners-grid {
@@ -1975,6 +2021,12 @@ p {
     font-size: 1rem;
     line-height: 1.6;
   }
+  .article-body li {
+    margin-left: 1rem;
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
   #article li {
     font-size: 1rem;
     line-height: 1.6;
@@ -2243,49 +2295,4 @@ p {
   .g-recaptcha {
     transform: scale(0.75);
   }
-}
-
-#article {
-  font-family: Arial, sans-serif;
-  color: black;
-}
-#article .left-aligned {
-  font-family: Arial, sans-serif;
-  color: black;
-}
-#article .left-aligned-brand {
-  font-family: var(--font-heading), sans-serif;
-  color: var(--brand-color);
-  position: relative;
-}
-#article .left-aligned::after {
-  background-color: black;
-}
-#article .left-aligned-brand::after {
-  content: "";
-  position: absolute;
-  bottom: -10px;
-  left: 0;
-  width: 80px;
-  height: 4px;
-  background-color: var(--brand-color);
-}
-#article h3,
-#article h4,
-#article h5,
-#article h6 {
-  font-family: Arial, sans-serif;
-  color: black;
-  font-weight: lighter;
-}
-#article h1,
-#article h2 {
-  font-family: Arial, sans-serif;
-  color: black;
-  font-weight: bold;
-}
-#article li {
-  font-size: 1.2rem;
-  font-family: Arial, sans-serif;
-  color: black;
 }
