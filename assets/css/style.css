@@ -410,11 +410,7 @@ nav ul li a:hover::after {
   color: var(--brand-color);
   position: relative;
 }
-.left-aligned .brand-typo {
-  font-family: var(--font-heading), sans-serif;
-  color: var(--brand-color);
-  position: relative;
-}
+
 .right-aligned {
   font-family: var(--font-heading), sans-serif;
   color: var(--brand-color);
@@ -2257,8 +2253,22 @@ p {
   font-family: Arial, sans-serif;
   color: black;
 }
+#article .left-aligned-brand {
+  font-family: var(--font-heading), sans-serif;
+  color: var(--brand-color);
+  position: relative;
+}
 #article .left-aligned::after {
   background-color: black;
+}
+#article .left-aligned-brand::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 80px;
+  height: 4px;
+  background-color: var(--brand-color);
 }
 #article h3,
 #article h4,
