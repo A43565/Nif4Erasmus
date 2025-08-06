@@ -19,8 +19,8 @@ document.addEventListener("DOMContentLoaded", () => {
     measurementId: "G-5GFPK7SM1T",
   };
   const STRIPE_PAYMENT_LINKS = {
-    nifOnly: "https://buy.stripe.com/test_aFa7sKeHj27zcUr5c38k800",
-    nifAndTax: "https://buy.stripe.com/test_dRm3cubv79A18EbeMD8k801",
+    nifOnly: "https://buy.stripe.com/28E8wO1Ub1I40SN2Ttbsc02",
+    nifAndTax: "https://buy.stripe.com/dRm00ibuL5Yk44ZgKjbsc01",
   };
 
   // Initialize Firebase
@@ -289,20 +289,21 @@ document.addEventListener("DOMContentLoaded", () => {
       try {
         const formData = new FormData(this);
 
+        // Generate unique session ID
+        const sessionId =
+          Date.now() + "_" + Math.random().toString(36).substr(2, 9);
+
         // Upload files first
         const idCard = formData.get("idCard");
+        const email = formData.get("email");
         const proofOfAddress = formData.get("proofOfAddress");
 
-        await uploadFile(
-          idCard,
-          `documents/${formData.get("email")}/id-card-${Date.now()}`
-        );
+        await uploadFile(idCard, `documents/${email}/id-card-${Date.now()}`);
 
         await uploadFile(
           proofOfAddress,
-          `documents/${formData.get("email")}/proof-address-${Date.now()}`
+          `documents/${email}/proof-address-${Date.now()}`
         );
-        const email = formData.get("email");
         const firebaseConsoleUrl =
           "https://console.firebase.google.com/u/0/project/nif4erasmus-3fb80/storage/nif4erasmus-3fb80.firebasestorage.app/files/~2Fdocuments~2F" +
           email;
@@ -363,8 +364,12 @@ document.addEventListener("DOMContentLoaded", () => {
           "formSubmission",
           JSON.stringify(formDataObject)
         );
-        console.log("Form data object:", formDataObject);
-        // Send email with download URLs
+        
+        const formId = `form_${Date.now()}`;
+        await storage
+          .collection("formSubmissions")
+          .doc(formId)
+          .set(formDataObject);
 
         // Get the selected service
         const selectedService = formData.get("service");
@@ -378,15 +383,19 @@ document.addEventListener("DOMContentLoaded", () => {
         console.log("Selected service:", selectedService);
         console.log("Payment link:", paymentLink);
         console.log(window.location.origin);
+
+        // 4. Create the success URL with parameters
         const successUrl = new URL(`${window.location.origin}/success.html`);
         console.log("Success URL:", successUrl);
         successUrl.searchParams.append("payment_status", "success");
         successUrl.searchParams.append("service", selectedService);
+        successUrl.searchParams.append("email", email);
+
         // 5. Redirect to Stripe payment with success URL
         const stripeUrl = new URL(paymentLink);
         console.log("Stripe URL:", stripeUrl);
         stripeUrl.searchParams.append("success_url", successUrl.toString());
-        // Redirect to Stripe payment link
+
         // 6. Redirect to payment
         console.log(
           "Redirecting to Stripe payment link:",
@@ -619,35 +628,91 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
   // Handle success page logic
-
   console.log("Current pathname:", window.location.pathname);
+
   if (window.location.pathname.includes("success.html")) {
-    const formDataString = sessionStorage.getItem("formSubmission");
-    console.log("Retrieved form data:", formDataString);
+    const urlParams = new URLSearchParams(window.location.search);
+    const email = urlParams.get("email");
 
-    if (formDataString) {
-      try {
-        // Parse the stored JSON string back to an object
-        const formData = JSON.parse(formDataString);
-        console.log("Parsed form data:", formData);
+    // Show sending status if present
+    const emailStatusEl = document.querySelector(".email-status");
+    if (emailStatusEl) emailStatusEl.style.display = "block";
 
-        // Send email with the parsed form data
-        emailjs.send("service_4ekh8ho", "template_p42864p", formData).then(
-          function (response) {
-            console.log("Email sent successfully:", response);
-            // Clear the session storage after successful email
-            sessionStorage.removeItem("formSubmission");
-          },
-          function (error) {
-            console.error("Failed to send email:", error);
+    if (email) {
+      // ✅ Try to fetch from Firestore
+      firebase
+        .firestore()
+        .collection("formSubmissions")
+        .doc(email)
+        .get()
+        .then((doc) => {
+          if (doc.exists) {
+            const formData = doc.data();
+            console.log("Fetched from Firestore:", formData);
+
+            emailjs.send("service_4ekh8ho", "template_p42864p", formData).then(
+              function (response) {
+                console.log("✅ Email sent successfully:", response);
+                if (emailStatusEl)
+                  emailStatusEl.innerHTML =
+                    "<p class='status-message'>Confirmation email sent successfully!</p>";
+              },
+              function (error) {
+                console.error("❌ Failed to send email:", error);
+                if (emailStatusEl)
+                  emailStatusEl.innerHTML =
+                    "<p class='status-message'>Error sending confirmation email.</p>";
+              }
+            );
+          } else {
+            console.warn(
+              "❗ Email param found, but no Firestore doc. Falling back to sessionStorage."
+            );
+            tryFallback();
           }
-        );
-      } catch (error) {
-        console.error("Error parsing form data:", error);
-      }
+        })
+        .catch((error) => {
+          console.error("❌ Error fetching from Firestore:", error);
+          tryFallback();
+        });
     } else {
-      // Redirect to home if no form data
-      window.location.href = "/Nif4Erasmus/index.html";
+      console.warn("No email param found. Trying sessionStorage fallback.");
+      tryFallback();
+    }
+
+    function tryFallback() {
+      const formDataString = sessionStorage.getItem("formSubmission");
+      if (formDataString) {
+        try {
+          const formData = JSON.parse(formDataString);
+          console.log("Parsed form data from sessionStorage:", formData);
+
+          emailjs.send("service_4ekh8ho", "template_p42864p", formData).then(
+            function (response) {
+              console.log("✅ Email sent via fallback:", response);
+              sessionStorage.removeItem("formSubmission");
+              if (emailStatusEl)
+                emailStatusEl.innerHTML =
+                  "<p class='status-message'>Confirmation email sent via fallback.</p>";
+            },
+            function (error) {
+              console.error("❌ Fallback email send failed:", error);
+              if (emailStatusEl)
+                emailStatusEl.innerHTML =
+                  "<p class='status-message'>Email failed to send.</p>";
+            }
+          );
+        } catch (err) {
+          console.error("❌ Failed to parse fallback session data:", err);
+          if (emailStatusEl)
+            emailStatusEl.innerHTML =
+              "<p class='status-message'>Error parsing fallback data.</p>";
+        }
+      } else {
+        // Final fail
+        console.warn("No form data found in sessionStorage. Redirecting.");
+        window.location.href = "/index.html";
+      }
     }
   }
 
